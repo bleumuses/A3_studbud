@@ -1,2 +1,2 @@
 # STUDBUD
- This is DECO2017 Assignment 3 STUDBUD Prototype
+ This is a web app prototype for STUDBUD
