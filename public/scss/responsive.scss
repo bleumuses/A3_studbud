@@ -1,0 +1,85 @@
+/* If the screen size 8is 2560px wide or less, set the following styling to certain elements */
+@media screen and (max-width: 2560px) {
+    .green-button {
+        padding: 10px 40px;
+    }
+    nav{
+        padding: 40px;
+    }
+    .nav-item a {
+        padding: 10px 40px;
+        margin: 10px;
+    }
+}
+
+/* If the screen size is 992px wide or less, set the following styling to certain elements */
+@media screen and (max-width: 992px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+        margin: 20px 10px 0px 0px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+    .green-button {
+        padding: 10px 25px;
+    }
+    nav {
+        padding: 40px 20px;
+    }
+    .nav-item a {
+        padding: 10px 25px;
+        margin: 5px;
+        border: 2px;
+    }
+}
+
+/* If the screen size is 732px wide or less, set the following styling to certain elements */
+@media screen and (max-width: 732px) {
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    button {
+        font-size: 1rem;
+        margin: 20px 10px 0px 0px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+    .green-button {
+        font-size: 0.8rem;
+        padding: 10px 25px;
+    }
+
+    nav {
+        padding: 40px 20px;
+    }
+
+    .nav-item a {
+        font-size: 0.8rem;
+        padding: 8px 15px;
+        margin: 5px;
+        border: 2px;
+    }
+
+    #add-button {
+        padding: 20px 10px;
+    }
+}

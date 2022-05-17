@@ -1,0 +1,49 @@
+{
+  "name": "studbud",
+  "version": "1.0.0",
+  "description": "This is a study application designed for students with ADHD",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "prestart": "parcel build ./public/index.html",
+    "dev": "parcel serve ./public/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bleumuses/studbud.git"
+  },
+  "keywords": [
+    "study",
+    "app",
+    "studbud",
+    "ADHD"
+  ],
+  "author": "Samantha Le",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bleumuses/studbud/issues"
+  },
+  "homepage": "https://github.com/bleumuses/studbud#readme",
+  "dependencies": {
+    "dragula": "^3.7.3",
+    "express": "^4.18.1",
+    "sass": "^1.51.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.5.0",
+    "assert": "^2.0.0",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "events": "^3.3.0",
+    "parcel": "^2.5.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "querystring-es3": "^0.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0",
+    "util": "^0.12.4"
+  }
+}

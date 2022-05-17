@@ -1,0 +1,25 @@
+// Draggable Acronym Card styling
+#acrocard-header {
+    background-color: #BC4B51;
+    color: #FCFCFC;
+    padding: 20px;
+    margin-bottom: 20px;
+    } 
+    h3 {
+    margin-bottom: 10px;
+    font-weight: 400;
+    cursor: text;
+}
+
+#acrocard-content {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    } 
+    p {
+    font-size: 12px;
+    cursor: text;
+}

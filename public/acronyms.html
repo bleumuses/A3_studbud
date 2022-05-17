@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="study, app, student, ADHD">
+    <meta name="description" content="STUDBUD is a study website application designed for students with ADHD">
+    <meta name="author" content="Samantha Le">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Webpage title -->
+    <title>STUDBUD Kanban</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
+    <link href="scss/main.scss" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="horizonal">
+        <ul class="nav-links">
+            <li class="nav-item"><a href="index.html">Tasks</a></li>
+            <li class="nav-item"><a href="acronyms.html" class="active">Acronyms</a></li>
+        </ul>
+        <a href="index.html"><h1>STUDBUD</h1></a>
+    </nav>
+    <!-- 'Generate new acronym' Form -->
+    <div class="acrogen-modal-container" id="acrogen-modal-container">
+        <div class="modal" id="acrogen-modal">
+            <form id="acrogen">
+                <h3>Generate New Acronym</h3>
+                <!--Word input-->
+                <label for="word">Text/Name/Words</label>
+                <input type="text" name="word" id="wordInput" placeholder="Enter what you want to acronymise here" required>
+                <br>
+                
+                <button class="white-button" id="closeAcroGenForm" type="button">Cancel</button>
+                <!-- Submit -->
+                <button class="green-button" id="submitAcroGenForm" type="submit">Generate</button>
+            </form>
+        </div>
+    </div>
+    <!-- 'Add new acronym' Form -->
+    <div class="acro-modal-container" id="acro-modal-container">
+        <div class="modal" id="acro-modal">
+            <form id="acronym">
+                <h3>Add New Acronym</h3>
+                <!-- Acronym input -->
+                <label for="acro">Acronym</label>
+                <input type="text" name="acroWord" id="acroWordInput" placeholder="Enter the acronym of your text/name/words" required>
+                <br>
+                <!-- Definition input -->
+                <label for="definition">Text/Name/Words</label>
+                <input type="text" name="defintion" id="defintionInput" placeholder="Enter the original definition of your acronym" required>
+                <br>
+                <!-- Close -->
+                <button class="white-button" id="closeAcroForm" type="button">Cancel</button>
+                <!-- Submit -->
+                <button class="green-button" id="submitAcroForm" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+    <!-- Main webpage content -->
+    <main id="page1" class="page-container">
+    <!-- Kanban board content -->
+        <div id="kanban">
+            <div id="kanban-column">
+                <!-- Editable default column name -->
+                <h2 contenteditable="true">&#128290 maths</h2>
+                <hr>
+                <!-- Container to contain and allow task cards to be dropped in -->
+                <div class="container">
+                    <!-- Content will be dynamically loaded from local storage -->
+                </div>
+            </div>
+            <div id="kanban-column">
+                <!-- Editable default column name -->
+                <h2 contenteditable="true">&#129514 chem</h2>
+                <hr>
+                <!-- Container to contain and allow task cards to be dropped in -->
+                <div class="container">
+                    <!-- Content will be dynamically loaded from local storage -->
+                </div>
+            </div>
+            <div id="kanban-column">
+                <!-- Editable default column name -->
+                <h2 contenteditable="true">&#127759 geo</h2>
+                <hr>
+                <!-- Container to contain and allow task cards to be dropped in -->
+                <div class="container">
+                    <!-- Content will be dynamically loaded from local storage -->
+                </div>
+            </div>
+        </div>
+        <!-- Buttons for user to add new tasks and columns -->
+        <div id="add-button">
+            <button class="green-button" id="genNewAcro">+ Generate Acronym</button>
+            <button class="green-button" id="addNewAcro">+ Add Acronym</button>
+        </div>
+    </main>
+	<script src="./components/acronyms.js" type="module"></script>
+  </body>
+</html>
