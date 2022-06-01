@@ -1,10 +1,18 @@
+#watch-feature {
+    border: 4px #4D7A7A solid;
+    border-radius: 50px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.feature-show {
+    display: block;
+}
+
 #watch {
     position: absolute;
     display: none;
-    z-index: 9;
-    width: 100%;
-    min-width: 120px;
-    max-width: 400px;
+    z-index: 1000;
     border-radius: 32px;
     color: #FCFCFC;
     background-color: #4D7A7A;
@@ -14,15 +22,21 @@
 }
 
 .watch-nav {
-    padding-bottom: 30px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.watch-nav span {
+    cursor: pointer;
+    &:hover {
+        color: #5E9797;
+    }
 }
 
 .watch-toggle {
-    color: #FCFCFC;
-    background-color: transparent;
     font-weight: 700;
-    font-size: 12px;
-    padding: 10px 20px;
     border: 3px solid #FCFCFC;
     &:hover {
         color: #5E9797;
@@ -42,15 +56,18 @@
     }
 }
 
+#pomodoro-feature {
+    display: none;
+}
+
 .time {
     font-family: 'Inter', sans-serif;
-    font-size: 3rem;
     font-weight: 700;
     color: #FCFCFC;
+    padding-bottom: 10px;
 }
 
 .control {
-    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,11 +81,4 @@
     &:hover {
         color:#5E9797;
     }
-    .active {
-        color: #5E9797;
-    }
-}
-
-.md-36 { 
-    font-size: 36px !important;
 }

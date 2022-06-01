@@ -2,13 +2,54 @@
 @media screen and (max-width: 2560px) {
     .green-button {
         padding: 10px 40px;
+        margin-right: 20px;
     }
-    nav{
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: 40px;
     }
     .nav-item a {
         padding: 10px 40px;
         margin: 10px;
+    }
+
+    #kanban {
+        padding: 30px 30px 0px 30px;
+    }
+
+    #watch {
+        width: 100%;
+        min-width: 120px;
+        max-width: 400px;
+    }
+
+    .watch-nav {
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+    .watch-nav span {
+        font-size: 2rem;
+    }
+
+    .watch-toggle {
+        font-size: 0.7rem;
+        padding: 10px 20px;
+        margin-right: 20px;
+    }
+
+    .time {
+        font-size: 3rem;
+    }
+
+    .control {
+        margin-bottom: 20px;
+    }
+
+    .icon-size { 
+        font-size: 36px !important;
     }
 }
 
@@ -20,7 +61,7 @@
 
     button {
         font-size: 1rem;
-        margin: 20px 10px 0px 0px;
+        margin-right: 20px;
     }
 
     h2 {
@@ -33,13 +74,14 @@
     }
     .green-button {
         padding: 10px 25px;
+        margin-right: 10px;
     }
     nav {
         padding: 40px 20px;
     }
     .nav-item a {
         padding: 10px 25px;
-        margin: 5px;
+        margin: 10px;
         border: 2px;
     }
 }
@@ -52,7 +94,7 @@
 
     button {
         font-size: 1rem;
-        margin: 20px 10px 0px 0px;
+        margin: 0px 5px;
     }
 
     h2 {
@@ -65,21 +107,66 @@
     }
     .green-button {
         font-size: 0.8rem;
-        padding: 10px 25px;
+        padding: 8px 15px;
+        margin-right: 5px;
     }
 
     nav {
-        padding: 40px 20px;
+        justify-content: center;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: 20px;
     }
 
     .nav-item a {
         font-size: 0.8rem;
         padding: 8px 15px;
-        margin: 5px;
+        margin: 0px 10px 0px 0px;
         border: 2px;
     }
 
     #add-button {
         padding: 20px 10px;
+    }
+
+    #kanban {
+        padding: 0px;
+    }
+
+    #watch {
+        left: 0px;
+        width: 100%;
+        min-width: 80px;
+        max-width: fit-content;
+    }
+    .watch-nav {
+        padding-top: 0px;
+        padding-bottom: 10px;
+    }
+
+    .watch-nav span {
+        font-size: 1.5rem;
+        margin-left: 5px;
+    }
+
+    .watch-toggle {
+        font-size: 0.5rem;
+        padding: 5px 10px;
+        margin-right: 5px;
+    }
+
+    .time {
+        font-size: 2rem;
+    }
+
+    .control {
+        margin-bottom: 10px;
+    }
+
+    .icon-size { 
+        font-size: 24px !important;
     }
 }
