@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Webpage title -->
-    <title>STUDBUD Kanban</title>
+    <title>STUDBUD Kanban Board</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.0e6e900a.png">
+    <!-- Stylesheets -->
     <link href="/index.c74267d1.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Icons -->
-    <script defer="" src="/index.f5a2afd8.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="/acronyms.ff8c9fdb.js"></script><script defer="" src="/acronyms.f5a2afd8.js"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -23,8 +23,9 @@
         <ul class="nav-links">
             <li class="nav-item"><a href="/index.html" class="active">Tasks</a></li>
             <li class="nav-item"><a href="/acronyms.html">Acronyms</a></li>
+            <li class="nav-item" id="music-btn"><i class="fa-solid fa-music icon-size"></i></li>
             <li class="nav-item" id="watch-btn"><i class="fa-solid fa-stopwatch icon-size"></i></li>
-        </ul>
+            </ul>
         <a href="/index.html"><h1>STUDBUD</h1></a>
     </nav>
     <!-- Modals -->
@@ -115,6 +116,10 @@
             </div>
         </div>
         <!-- Pomodoro -->
+        <audio id="myAudio">
+            <source src="/bell.85dedd90.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+        </audio>
         <div id="pomodoro-feature">
             <div id="pomodoro-container">
                 <div class="mode" id="focus-mode">Focus Time
@@ -142,10 +147,6 @@
                     <i class="fa-solid fa-gear icon-size"></i>
                 </button>
             </div>
-            <audio id="myAudio">
-                <source src="/bell.7527b49c.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-            </audio>
         </div>
     </div>
     <!-- Pomodoro Settings -->
@@ -158,14 +159,14 @@
                     <option value="">Select focus duration</option>
                     <option value="15">15 mins</option>
                     <option value="20">20 mins</option>
-                    <option value="25">25 mins</option>
+                    <option value="25">25 mins (Recommended)</option>
                     <option value="30">30 mins</option>
                     <option value="45">45 mins</option>
                 </select>
                 <label for="break-duration">Break Duration</label>
                 <select name="break-duration" id="breakDurationInput" required="">
                     <option value="">Select break duration</option>
-                    <option value="5">5 mins</option>
+                    <option value="5">5 mins (Recommended)</option>
                     <option value="10">10 mins</option>
                     <option value="20">20 mins</option>
                     <option value="30">30 mins</option>
@@ -217,6 +218,59 @@
             <button class="green-button" id="addNewTask">+ Task</button>
             <button class="green-button" id="addNewColumn">+ Column</button>
         </div>
+        <!-- Music Player -->
+        <div class="music-container" id="music-container">
+            <div id="song-container">
+            <div id="song1">
+                <div class="img-container">
+                <img src="/I-cant-make-you-love-me.24762dd7.jpeg" alt="music-cover" id="cover">
+                </div>
+                <div class="audio-container">
+                    <div id="song-info">I can't make you love me<span>  KINDA BLUE, Hwasa</span></div>
+                    <audio controls="" src="/I-cant-make-you-love-me.6ec5316d.mp3" id="audio">
+                        Your browser does not support the
+                        <code>audio</code> element.
+                    </audio>
+                </div>
+            </div>
+            <div id="song2">
+                <div class="img-container">
+                    <img src="/Movie.fff061a0.jpeg" alt="music-cover" id="cover2">
+                </div>
+                <div class="audio-container">
+                    <div id="song-info">Movie<span>  Tom Misch</span></div>
+                    <audio controls="" src="/Movie.0a8c200f.mp3" id="audio">
+                        Your browser does not support the
+                        <code>audio</code> element.
+                    </audio>
+                </div>
+            </div>
+            <div id="song3">
+                <div class="img-container">
+                <img src="/Thats-OK.208a124a.jpeg" alt="music-cover" id="cover">
+                </div>
+                <div class="audio-container">
+                    <div id="song-info">That's OK<span>  D.O.</span></div>
+                    <audio controls="" src="/Thats-OK.6942684d.mp3" id="audio">
+                        Your browser does not support the
+                        <code>audio</code> element.
+                    </audio>
+                </div>
+            </div>
+        </div>
+            <span id="close-music">
+                &times;
+            </span>
+            </div>
+        
+    <!-- <figure id="music-container">
+        <audio
+            controls
+            src="./music/I-cant-make-you-love-me.mp3">
+                Your browser does not support the
+                <code>audio</code> element.
+        </audio>
+    </figure> -->
     </main>
 	<script src="/index.3b06b0f7.js" defer=""></script>
   </body>

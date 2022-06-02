@@ -530,8 +530,9 @@ function hmrAcceptRun(bundle, id) {
 var _tasklist = require("./components/tasklist");
 var _kanbanColumn = require("./components/kanban-column");
 var _watch = require("./components/watch");
+var _music = require("./components/music");
 
-},{"./components/tasklist":"5i9SJ","./components/kanban-column":"99hOK","./components/watch":"2sNIP"}],"5i9SJ":[function(require,module,exports) {
+},{"./components/tasklist":"5i9SJ","./components/kanban-column":"99hOK","./components/watch":"2sNIP","./components/music":"2Z4jX"}],"5i9SJ":[function(require,module,exports) {
 //Basic task form DOM elements
 const taskModal = document.getElementById('taskform-modal-container');
 const taskform = document.getElementById('taskform');
@@ -811,677 +812,138 @@ function getDragAfterElement(container, y) {
     }).element;
 }
 
-},{}],"2sNIP":[function(require,module,exports) {
-// Code adapted from https://www.w3schools.com/howto/howto_js_draggable.asp
-const { init  } = require("events");
-// Make the watch draggable:
-dragElements(document.getElementById("watch"));
-function dragElements(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    let draggableWatch = document.getElementById("watch");
-    draggableWatch.onmousedown = dragMouseDown;
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-    }
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // set the element's new position:
-        elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-        elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-    }
-    function closeDragElement() {
-        // stop moving when mouse button is released:
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-}
-//Stopwatch
-// Attempt to toggle play/pause button but was advised by tutor to keep them as two separate buttons
-// let btn = document.querySelector('.toggle');
-// let icon = btn.querySelector('.fa-play');
-// console.log(btn);
-// btn.addEventListener('click', () => {
-//   console.log('button clicked');
-//   if (icon.classList.contains('fa-play')) {
-//     icon.classList.replace('fa-play', 'fa-pause');
-//   }
-//   else {
-//     icon.classList.replace('fa-pause', 'fa-play');
-//   }
-// })
-//Global Variables
-const watch = document.getElementById('watch');
-const activateWatchButton = document.getElementById('watch-btn');
-const stopwatch = document.getElementById('stopwatch-feature');
-const pomodoro = document.getElementById('pomodoro-feature');
-const pomodoroSettings = document.getElementById('settings-modal-container');
-const activateStopwatchButton = document.getElementById('stopwatch');
-const activatePomodoroButton = document.getElementById('pomodoro');
-const openPomodoroSettingsButton = document.getElementById('pomodoro-settings-btn');
-const closePomodoroSettingsButton = document.getElementById('closeSettings');
-const closeWatchButton = document.getElementById('close-watch');
-// Watch opening event listener
-activateWatchButton.addEventListener('click', ()=>{
-    watch.style.display = 'block';
-    activateWatchButton.style.color = '#FCFCFC';
-    activateWatchButton.style.backgroundColor = '#4D7A7A';
-    activateStopwatchButton.style.color = '#4d7a7a';
-    activateStopwatchButton.style.backgroundColor = '#FCFCFC';
-    activatePomodoroButton.style.color = '#FCFCFC';
-    activatePomodoroButton.style.backgroundColor = '#4d7a7a';
+},{}],"2Z4jX":[function(require,module,exports) {
+const musicContainer = document.getElementById('music-container');
+const activateMusicPlayer = document.getElementById('music-btn');
+const closeMusicPlayerBtn = document.getElementById('close-music');
+// const playBtn = document.getElementById('play');
+// const pauseBtn = document.getElementById('pause');
+const prevBtn = document.getElementById('prev');
+const skipBtn = document.getElementById('skip');
+const audio = document.getElementById('audio');
+const progress = document.getElementById('progress');
+const progressContainer = document.getElementById('progress-container');
+const title = document.getElementById('title');
+const cover = document.getElementById('cover');
+// Music Player opening event listener
+activateMusicPlayer.addEventListener('click', ()=>{
+    musicContainer.style.display = 'flex';
+    activateMusicPlayer.style.color = '#FCFCFC';
+    activateMusicPlayer.style.backgroundColor = '#4D7A7A';
+    document.getElementById('song1').style.display = 'flex';
 });
-// Stopwatch Toggle opening event listener
-activateStopwatchButton.addEventListener('click', ()=>{
-    stopwatch.style.display = 'block';
-    pomodoro.style.display = 'none';
-    pomodoroSettings.classList.remove('show');
-    activateStopwatchButton.style.color = '#4d7a7a';
-    activateStopwatchButton.style.backgroundColor = '#FCFCFC';
-    activatePomodoroButton.style.color = '#FCFCFC';
-    activatePomodoroButton.style.backgroundColor = '#4d7a7a';
-});
-// Pomodoro Toggle opening event listener
-activatePomodoroButton.addEventListener('click', ()=>{
-    pomodoro.style.display = 'block';
-    stopwatch.style.display = 'none';
-    pomodoroSettings.classList.remove('show');
-    activatePomodoroButton.style.color = '#4d7a7a';
-    activatePomodoroButton.style.backgroundColor = '#FCFCFC';
-    activateStopwatchButton.style.color = '#FCFCFC';
-    activateStopwatchButton.style.backgroundColor = '#4d7a7a';
-});
-// Pomodoro Settings opening event listener
-openPomodoroSettingsButton.addEventListener('click', ()=>{
-    pomodoroSettings.classList.add('show');
-    stopwatch.style.display = 'none';
-    pomodoro.style.display = 'block';
-});
-// Pomodoro Settings closing event listener
-closePomodoroSettingsButton.addEventListener('click', ()=>{
-    pomodoroSettings.classList.remove('show');
-});
-// Close Watch Modal
-closeWatchButton.addEventListener('click', ()=>{
-    watch.style.display = 'none';
-    pomodoroSettings.classList.remove('show');
-    activateWatchButton.style.color = '#4D7A7A';
-    activateWatchButton.style.backgroundColor = '#FCFCFC';
-});
-// Stopwatch
-const stopwatchTime_el = document.getElementById('stopwatch-time');
-const startStopwatchButton = document.getElementById('start');
-const stopStopwatchButton = document.getElementById('stop');
-const resetStopwatchtButton = document.getElementById('reset');
-let stopwatchSeconds = 0;
-let interval = null;
-//Stopwatch Event Listerners
-startStopwatchButton.addEventListener('click', stopwatchStart);
-stopStopwatchButton.addEventListener('click', stopwatchStop);
-resetStopwatchtButton.addEventListener('click', stopwatchReset);
-//Update time
-function stopwatchTimer() {
-    stopwatchSeconds++;
-    //Format time
-    let hrs = Math.floor(stopwatchSeconds / 3600);
-    let mins = Math.floor((stopwatchSeconds - hrs * 3600) / 60);
-    let secs = stopwatchSeconds % 60;
-    if (hrs < 10) hrs = "0" + hrs;
-    if (mins < 10) mins = "0" + mins;
-    if (secs < 10) secs = "0" + secs;
-    stopwatchTime_el.innerText = `${hrs}:${mins}:${secs}`;
-}
-function stopwatchStart() {
-    if (interval) return;
-    interval = setInterval(stopwatchTimer, 1000);
-    startStopwatchButton.style.color = '#5E9797';
-    startStopwatchButton.style.cursor = 'default';
-    resetStopwatchtButton.style.color = '#FCFCFC';
-    stopStopwatchButton.style.color = '#FCFCFC';
-}
-function stopwatchStop() {
-    clearInterval(interval);
-    interval = null;
-    startStopwatchButton.style.color = '#FCFCFC';
-    resetStopwatchtButton.style.color = '#FCFCFC';
-    stopStopwatchButton.style.color = '#5E9797';
-    stopStopwatchButton.style.cursor = 'default';
-}
-function stopwatchReset() {
-    stopwatchStop();
-    stopwatchSeconds = 0;
-    stopwatchTime_el.innerText = '00:00:00';
-    resetStopwatchtButton.style.color = '#5E9797';
-    resetStopwatchtButton.style.cursor = 'default';
-    startStopwatchButton.style.color = '#FCFCFC';
-    stopStopwatchButton.style.color = '#FCFCFC';
-}
-// Pomodoro timer
-// Adapted from https://github.com/Web-Dev-Jr/JS-Pomodoro
-const start = document.getElementById('pomodoro-start');
-const reset = document.getElementById('pomodoro-reset');
-const stop = document.getElementById('pomodoro-stop');
-const submitSettingsForm = document.getElementById('submitSettings');
-const focusInputField = document.getElementById('focusDurationInput');
-const breakInputField = document.getElementById('breakDurationInput');
-const wm = document.getElementById('w-minutes');
-const ws = document.getElementById('w-seconds');
-const bm = document.getElementById('b-minutes');
-const bs = document.getElementById('b-seconds');
-let startTimer;
-// Start timer button
-start.addEventListener('click', function() {
-    start.style.color = '#5E9797';
-    start.style.cursor = 'default';
-    stop.style.color = '#FCFCFC';
-    reset.style.color = '#FCFCFC';
-    if (wm.innerText <= 0 && ws.innerText == 0) alert("Please enter focus time!");
-    else if (bm.innerText <= 0 && bs.innerText == 0) alert("Please enter break time!");
-    else if (startTimer === undefined) {
-        startTimer = setInterval(timer, 1000);
-        focusInputField.value = '';
-        breakInputField.value = '';
-        clearInterval(stop);
-    } else alert("Timer is already running!");
-});
-// User focus time input 
-focusInputField.addEventListener('input', function() {
-    if (startTimer === undefined) wm.innerText = focusInputField.value;
-    if (focusInputField.value === undefined) wm.innerText = "0";
-});
-// User break time input 
-breakInputField.addEventListener('input', function() {
-    if (startTimer === undefined) bm.innerText = breakInputField.value;
-    if (breakInputField.value === undefined) bm.innerText = "0";
-});
-submitSettingsForm.addEventListener('click', function(event) {
-    event.preventDefault();
-    pomodoroSettings.classList.remove('show');
-});
-// Stop pomodoro timer button
-stop.addEventListener('click', function() {
-    stop.style.color = '#5E9797';
-    stop.style.cursor = 'default';
-    start.style.color = '#FCFCFC';
-    reset.style.color = '#FCFCFC';
-    if (startTimer != undefined) {
-        clearInterval(startTimer);
-        startTimer = undefined;
-    } else if (startTimer === undefined) alert("Timer is already stopped!");
-});
-// Reset pomodoro timer button
-reset.addEventListener('click', function() {
-    reset.style.color = '#5E9797';
-    reset.style.cursor = 'default';
-    stop.style.color = '#FCFCFC';
-    start.style.color = '#FCFCFC';
-    clearInterval(startTimer);
-    startTimer = undefined;
-    wm.innerText = "0";
-    ws.innerText = "00";
-    bm.innerText = "0";
-    bs.innerText = "00";
-});
-// Decrement seconds and minutes after timer starts
-function timer() {
-    if (ws.innerText != 0) {
-        ws.innerText--;
-        // add leading zero to break seconds
-        if (ws.innerText < 10) ws.innerText = `0${ws.innerText}`;
-    } else if (wm.innerText != 0 && ws.innerText == 0) {
-        ws.innerText = 59;
-        wm.innerText--;
-    }
-    if (wm.innerText == 0 && ws.innerText == 0) {
-        if (bs.innerText != 0) {
-            bs.innerText--;
-            // Add leading zero to work seconds < 10
-            if (bs.innerText < 10) bs.innerText = `0${bs.innerText}`;
-        } else if (bm.innerText != 0 && bs.innerText == 0) {
-            bs.innerText = 59;
-            bm.innerText--;
-        } else if (bm.innerText == 0 && bs.innerText == 0) {
-            clearInterval(startTimer);
-            startTimer = undefined;
-            wm.innerText = "0";
-            ws.innerText = "00";
-            bm.innerText = "0";
-            bs.innerText = "00";
-            timerEndAlert();
-        }
-    }
-}
-function timerEndAlert() {
-    const audioSound = document.getElementById('myAudio');
-    audioSound.play();
-} // Pomodoro
- // const submitSettingsForm = document.getElementById('submitSettings');
- // const pomodoroTime_el = document.getElementById('pomodoro-time');
- // const startPomodoroButton = document.getElementById('pomodoro-start');
- // const stopPomodoroButton = document.getElementById('pomodoro-stop');
- // const resetPomodorotButton = document.getElementById('pomodoro-reset');
- // //Pomodoro Event Listerners
- // startPomodoroButton.addEventListener('click', pomodoroStart);
- // stopPomodoroButton.addEventListener('click', pomodoroStop);
- // resetPomodorotButton.addEventListener('click', pomodoroReset);
- // // DOM elements for Pomodoro Settings input
- // var workDurationInput = document.getElementById('workDurationInput');
- // var breakDurationInput = document.getElementById('breakDurationInput');
- // submitSettingsForm.addEventListener('click', function(event) {
- //   event.preventDefault();
- //   let workDuration = workDurationInput.value;
- //   let breakDuration = breakDurationInput.value;
- //   pomodoroTimer(workDuration, breakDuration);
- //   pomodoroSettings.classList.remove('show');
+// Close Music Player Modal
+closeMusicPlayerBtn.addEventListener('click', ()=>{
+    musicContainer.style.display = 'none';
+    activateMusicPlayer.style.color = '#4D7A7A';
+    activateMusicPlayer.style.backgroundColor = '#FCFCFC';
+}) // // Skip
+ // skipBtn.addEventListener('click', () => {
+ //   document.getElementById('song1').style.display = 'none';
+ //   document.getElementById('song2').style.display = 'flex';
+ //   document.getElementById('song3').style.display = 'none';
  // })
- // //Update time
- // function pomodoroTimer (workDuration, breakDuration) {
- //     let pomodoroSeconds = workDuration * 60;
- //     //Format time
- //     let mins = Math.floor(pomodoroSeconds / 60);
- //     let secs = pomodoroSeconds % 60;
- //     if (mins < 10) mins = "0" + mins;
- //     if (secs < 10) secs = "0" + secs;
- //     pomodoroTime_el.innerText = `${mins}:${secs}`;
+ // // Previous
+ // prevBtn.addEventListener('click', () => {
+ //   document.getElementById('song1').style.display = 'none';
+ //   document.getElementById('song2').style.display = 'none';
+ //   document.getElementById('song3').style.display = 'flex';
+ // })
+ // // Song titles
+ // const songs = [
+ //     {
+ //       path: './music/I-cant-make-you-love-me.mp3',
+ //       songName: "I can't make you love me",
+ //       cover: './music-cover/I-cant-make-you-love-me.jpeg'
+ //     },
+ //     {
+ //       path: './music/Movie.mp3',
+ //       songName: "Movie",
+ //       cover: './music-cover/Movie.jpeg'
+ //     },
+ //     {
+ //       path: './music/Thats-OK.mp3',
+ //       songName: "That's OK",
+ //       cover: './music-cover/Thats-OK.jpeg'
+ //     }
+ // ];
+ // // Update song details
+ // function loadSong(songs) {
+ //   title.innerText = songs.songName;
+ //   audio.src = songs.path;
+ //   cover.src = songs.cover;
  // }
- // function pomodoroStart (workDuration) {
- //     seconds = workDuration*60 || 0;
- //     console.log(seconds);
- //     interval = setInterval(function() {
- //       seconds--;
- //       if(!seconds) {
- //         clearInterval(interval);
- //       }
- //     },1000)
- //     startPomodoroButton.style.color = '#5E9797';
- //     startPomodoroButton.style.cursor = 'default';
- //     stopPomodoroButton.style.color = '#FCFCFC'
- //     resetPomodorotButton.style.color = '#FCFCFC'
+ // // Play song
+ // function playSong() {
+ //   musicContainer.classList.add('play');
+ //   playBtn.style.color = '#5E9797';
+ //   playBtn.style.cursor = 'default';
+ //   pauseBtn.style.color = '#4D7A7A';
+ //   audio.play();
  // }
- // function pomodoroStop () {
- //     clearInterval(interval);
- //     interval = null;
- //     startPomodoroButton.style.color = '#FCFCFC';
- //     resetPomodorotButton.style.color = '#FCFCFC'
- //     stopPomodoroButton.style.color = '#5E9797';
- //     stopPomodoroButton.style.cursor = 'default';
+ // // Pause song
+ // function pauseSong() {
+ //   musicContainer.classList.remove('play');
+ //   playBtn.style.color = '#4D7A7A';
+ //   pauseBtn.style.color = '#5E9797';
+ //   pauseBtn.style.cursor = 'default';
+ //   audio.pause();
  // }
- // function pomodoroReset () {
- //     pomodoroStop();
- //     pomodoroSeconds = 1500;
- //     pomodoroTime_el.innerText = '25:00';
- //     resetPomodorotButton.style.color = '#5E9797'
- //     resetPomodorotButton.style.cursor = 'default';
- //     startPomodoroButton.style.color = '#FCFCFC';
- //     stopPomodoroButton.style.color = '#FCFCFC';
- // }
-
-},{"events":"1VQLm"}],"1VQLm":[function(require,module,exports) {
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-'use strict';
-var R = typeof Reflect === 'object' ? Reflect : null;
-var ReflectApply = R && typeof R.apply === 'function' ? R.apply : function ReflectApply(target, receiver, args) {
-    return Function.prototype.apply.call(target, receiver, args);
-};
-var ReflectOwnKeys;
-if (R && typeof R.ownKeys === 'function') ReflectOwnKeys = R.ownKeys;
-else if (Object.getOwnPropertySymbols) ReflectOwnKeys = function ReflectOwnKeys(target) {
-    return Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target));
-};
-else ReflectOwnKeys = function ReflectOwnKeys(target) {
-    return Object.getOwnPropertyNames(target);
-};
-function ProcessEmitWarning(warning) {
-    if (console && console.warn) console.warn(warning);
-}
-var NumberIsNaN = Number.isNaN || function NumberIsNaN(value) {
-    return value !== value;
-};
-function EventEmitter() {
-    EventEmitter.init.call(this);
-}
-module.exports = EventEmitter;
-module.exports.once = once;
-// Backwards-compat with node 0.10.x
-EventEmitter.EventEmitter = EventEmitter;
-EventEmitter.prototype._events = undefined;
-EventEmitter.prototype._eventsCount = 0;
-EventEmitter.prototype._maxListeners = undefined;
-// By default EventEmitters will print a warning if more than 10 listeners are
-// added to it. This is a useful default which helps finding memory leaks.
-var defaultMaxListeners = 10;
-function checkListener(listener) {
-    if (typeof listener !== 'function') throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
-}
-Object.defineProperty(EventEmitter, 'defaultMaxListeners', {
-    enumerable: true,
-    get: function() {
-        return defaultMaxListeners;
-    },
-    set: function(arg) {
-        if (typeof arg !== 'number' || arg < 0 || NumberIsNaN(arg)) throw new RangeError('The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received ' + arg + '.');
-        defaultMaxListeners = arg;
-    }
-});
-EventEmitter.init = function() {
-    if (this._events === undefined || this._events === Object.getPrototypeOf(this)._events) {
-        this._events = Object.create(null);
-        this._eventsCount = 0;
-    }
-    this._maxListeners = this._maxListeners || undefined;
-};
-// Obviously not all Emitters should be limited to 10. This function allows
-// that to be increased. Set to zero for unlimited.
-EventEmitter.prototype.setMaxListeners = function setMaxListeners(n) {
-    if (typeof n !== 'number' || n < 0 || NumberIsNaN(n)) throw new RangeError('The value of "n" is out of range. It must be a non-negative number. Received ' + n + '.');
-    this._maxListeners = n;
-    return this;
-};
-function _getMaxListeners(that) {
-    if (that._maxListeners === undefined) return EventEmitter.defaultMaxListeners;
-    return that._maxListeners;
-}
-EventEmitter.prototype.getMaxListeners = function getMaxListeners() {
-    return _getMaxListeners(this);
-};
-EventEmitter.prototype.emit = function emit(type) {
-    var args = [];
-    for(var i = 1; i < arguments.length; i++)args.push(arguments[i]);
-    var doError = type === 'error';
-    var events = this._events;
-    if (events !== undefined) doError = doError && events.error === undefined;
-    else if (!doError) return false;
-    // If there is no 'error' event listener then throw.
-    if (doError) {
-        var er;
-        if (args.length > 0) er = args[0];
-        if (er instanceof Error) // Note: The comments on the `throw` lines are intentional, they show
-        // up in Node's output if this results in an unhandled exception.
-        throw er; // Unhandled 'error' event
-        // At least give some kind of context to the user
-        var err = new Error('Unhandled error.' + (er ? ' (' + er.message + ')' : ''));
-        err.context = er;
-        throw err; // Unhandled 'error' event
-    }
-    var handler = events[type];
-    if (handler === undefined) return false;
-    if (typeof handler === 'function') ReflectApply(handler, this, args);
-    else {
-        var len = handler.length;
-        var listeners = arrayClone(handler, len);
-        for(var i = 0; i < len; ++i)ReflectApply(listeners[i], this, args);
-    }
-    return true;
-};
-function _addListener(target, type, listener, prepend) {
-    var m;
-    var events;
-    var existing;
-    checkListener(listener);
-    events = target._events;
-    if (events === undefined) {
-        events = target._events = Object.create(null);
-        target._eventsCount = 0;
-    } else {
-        // To avoid recursion in the case that type === "newListener"! Before
-        // adding it to the listeners, first emit "newListener".
-        if (events.newListener !== undefined) {
-            target.emit('newListener', type, listener.listener ? listener.listener : listener);
-            // Re-assign `events` because a newListener handler could have caused the
-            // this._events to be assigned to a new object
-            events = target._events;
-        }
-        existing = events[type];
-    }
-    if (existing === undefined) {
-        // Optimize the case of one listener. Don't need the extra array object.
-        existing = events[type] = listener;
-        ++target._eventsCount;
-    } else {
-        if (typeof existing === 'function') // Adding the second element, need to change to array.
-        existing = events[type] = prepend ? [
-            listener,
-            existing
-        ] : [
-            existing,
-            listener
-        ];
-        else if (prepend) existing.unshift(listener);
-        else existing.push(listener);
-        // Check for listener leak
-        m = _getMaxListeners(target);
-        if (m > 0 && existing.length > m && !existing.warned) {
-            existing.warned = true;
-            // No error code for this since it is a Warning
-            // eslint-disable-next-line no-restricted-syntax
-            var w = new Error('Possible EventEmitter memory leak detected. ' + existing.length + ' ' + String(type) + ' listeners ' + 'added. Use emitter.setMaxListeners() to ' + 'increase limit');
-            w.name = 'MaxListenersExceededWarning';
-            w.emitter = target;
-            w.type = type;
-            w.count = existing.length;
-            ProcessEmitWarning(w);
-        }
-    }
-    return target;
-}
-EventEmitter.prototype.addListener = function addListener(type, listener) {
-    return _addListener(this, type, listener, false);
-};
-EventEmitter.prototype.on = EventEmitter.prototype.addListener;
-EventEmitter.prototype.prependListener = function prependListener(type, listener) {
-    return _addListener(this, type, listener, true);
-};
-function onceWrapper() {
-    if (!this.fired) {
-        this.target.removeListener(this.type, this.wrapFn);
-        this.fired = true;
-        if (arguments.length === 0) return this.listener.call(this.target);
-        return this.listener.apply(this.target, arguments);
-    }
-}
-function _onceWrap(target, type, listener) {
-    var state = {
-        fired: false,
-        wrapFn: undefined,
-        target: target,
-        type: type,
-        listener: listener
-    };
-    var wrapped = onceWrapper.bind(state);
-    wrapped.listener = listener;
-    state.wrapFn = wrapped;
-    return wrapped;
-}
-EventEmitter.prototype.once = function once(type, listener) {
-    checkListener(listener);
-    this.on(type, _onceWrap(this, type, listener));
-    return this;
-};
-EventEmitter.prototype.prependOnceListener = function prependOnceListener(type, listener) {
-    checkListener(listener);
-    this.prependListener(type, _onceWrap(this, type, listener));
-    return this;
-};
-// Emits a 'removeListener' event if and only if the listener was removed.
-EventEmitter.prototype.removeListener = function removeListener(type, listener) {
-    var list, events, position, i, originalListener;
-    checkListener(listener);
-    events = this._events;
-    if (events === undefined) return this;
-    list = events[type];
-    if (list === undefined) return this;
-    if (list === listener || list.listener === listener) {
-        if (--this._eventsCount === 0) this._events = Object.create(null);
-        else {
-            delete events[type];
-            if (events.removeListener) this.emit('removeListener', type, list.listener || listener);
-        }
-    } else if (typeof list !== 'function') {
-        position = -1;
-        for(i = list.length - 1; i >= 0; i--)if (list[i] === listener || list[i].listener === listener) {
-            originalListener = list[i].listener;
-            position = i;
-            break;
-        }
-        if (position < 0) return this;
-        if (position === 0) list.shift();
-        else spliceOne(list, position);
-        if (list.length === 1) events[type] = list[0];
-        if (events.removeListener !== undefined) this.emit('removeListener', type, originalListener || listener);
-    }
-    return this;
-};
-EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
-EventEmitter.prototype.removeAllListeners = function removeAllListeners(type) {
-    var listeners, events, i;
-    events = this._events;
-    if (events === undefined) return this;
-    // not listening for removeListener, no need to emit
-    if (events.removeListener === undefined) {
-        if (arguments.length === 0) {
-            this._events = Object.create(null);
-            this._eventsCount = 0;
-        } else if (events[type] !== undefined) {
-            if (--this._eventsCount === 0) this._events = Object.create(null);
-            else delete events[type];
-        }
-        return this;
-    }
-    // emit removeListener for all listeners on all events
-    if (arguments.length === 0) {
-        var keys = Object.keys(events);
-        var key;
-        for(i = 0; i < keys.length; ++i){
-            key = keys[i];
-            if (key === 'removeListener') continue;
-            this.removeAllListeners(key);
-        }
-        this.removeAllListeners('removeListener');
-        this._events = Object.create(null);
-        this._eventsCount = 0;
-        return this;
-    }
-    listeners = events[type];
-    if (typeof listeners === 'function') this.removeListener(type, listeners);
-    else if (listeners !== undefined) // LIFO order
-    for(i = listeners.length - 1; i >= 0; i--)this.removeListener(type, listeners[i]);
-    return this;
-};
-function _listeners(target, type, unwrap) {
-    var events = target._events;
-    if (events === undefined) return [];
-    var evlistener = events[type];
-    if (evlistener === undefined) return [];
-    if (typeof evlistener === 'function') return unwrap ? [
-        evlistener.listener || evlistener
-    ] : [
-        evlistener
-    ];
-    return unwrap ? unwrapListeners(evlistener) : arrayClone(evlistener, evlistener.length);
-}
-EventEmitter.prototype.listeners = function listeners(type) {
-    return _listeners(this, type, true);
-};
-EventEmitter.prototype.rawListeners = function rawListeners(type) {
-    return _listeners(this, type, false);
-};
-EventEmitter.listenerCount = function(emitter, type) {
-    if (typeof emitter.listenerCount === 'function') return emitter.listenerCount(type);
-    else return listenerCount.call(emitter, type);
-};
-EventEmitter.prototype.listenerCount = listenerCount;
-function listenerCount(type) {
-    var events = this._events;
-    if (events !== undefined) {
-        var evlistener = events[type];
-        if (typeof evlistener === 'function') return 1;
-        else if (evlistener !== undefined) return evlistener.length;
-    }
-    return 0;
-}
-EventEmitter.prototype.eventNames = function eventNames() {
-    return this._eventsCount > 0 ? ReflectOwnKeys(this._events) : [];
-};
-function arrayClone(arr, n) {
-    var copy = new Array(n);
-    for(var i = 0; i < n; ++i)copy[i] = arr[i];
-    return copy;
-}
-function spliceOne(list, index) {
-    for(; index + 1 < list.length; index++)list[index] = list[index + 1];
-    list.pop();
-}
-function unwrapListeners(arr) {
-    var ret = new Array(arr.length);
-    for(var i = 0; i < ret.length; ++i)ret[i] = arr[i].listener || arr[i];
-    return ret;
-}
-function once(emitter, name) {
-    return new Promise(function(resolve, reject) {
-        function errorListener(err) {
-            emitter.removeListener(name, resolver);
-            reject(err);
-        }
-        function resolver() {
-            if (typeof emitter.removeListener === 'function') emitter.removeListener('error', errorListener);
-            resolve([].slice.call(arguments));
-        }
-        eventTargetAgnosticAddListener(emitter, name, resolver, {
-            once: true
-        });
-        if (name !== 'error') addErrorHandlerIfEventEmitter(emitter, errorListener, {
-            once: true
-        });
-    });
-}
-function addErrorHandlerIfEventEmitter(emitter, handler, flags) {
-    if (typeof emitter.on === 'function') eventTargetAgnosticAddListener(emitter, 'error', handler, flags);
-}
-function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
-    if (typeof emitter.on === 'function') {
-        if (flags.once) emitter.once(name, listener);
-        else emitter.on(name, listener);
-    } else if (typeof emitter.addEventListener === 'function') // EventTarget does not have `error` event semantics like Node
-    // EventEmitters, we do not listen for `error` events here.
-    emitter.addEventListener(name, function wrapListener(arg) {
-        // IE does not have builtin `{ once: true }` support so we
-        // have to do it manually.
-        if (flags.once) emitter.removeEventListener(name, wrapListener);
-        listener(arg);
-    });
-    else throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type ' + typeof emitter);
-}
+ // // Current song
+ // let i = 0;
+ // // loadSong(songs[i]);
+ // // Initially load song details into DOM
+ // // loadSong(songs[songIndex]);
+ // // // Previous song
+ // // function prevSong() {
+ // //   songIndex--;
+ // //   if (songIndex < 0) {
+ // //     songIndex = songs.length - 1;
+ // //   }
+ // //   loadSong(songs[songIndex]);
+ // //   playSong();
+ // // }
+ // // // Next song
+ // // function nextSong() {
+ // //   songIndex++;
+ // //   if (songIndex > songs.length - 1) {
+ // //     songIndex = 0;
+ // //   }
+ // //   loadSong(songs[songIndex]);
+ // //   playSong();
+ // // }
+ // // // Update progress bar
+ // // function updateProgress(e) {
+ // //   const { duration, currentTime } = e.srcElement;
+ // //   const progressPercent = (currentTime / duration) * 100;
+ // //   progress.style.width = `${progressPercent}%`;
+ // // }
+ // // // Set progress bar
+ // // function setProgress(e) {
+ // //   const width = this.clientWidth;
+ // //   const clickX = e.offsetX;
+ // //   const duration = audio.duration;
+ // //   audio.currentTime = (clickX / width) * duration;
+ // // }
+ // // // Event listeners
+ // // playBtn.addEventListener('click', () => {
+ // //   const isPlaying = musicContainer.classList.contains('play');
+ // //   if (isPlaying) {
+ // //     pauseSong();
+ // //   } else {
+ // //     playSong();
+ // //   }
+ // // });
+ // // // Change song
+ // // prevBtn.addEventListener('click', prevSong);
+ // // nextBtn.addEventListener('click', nextSong);
+ // // // Time/song update
+ // // audio.addEventListener('timeupdate', updateProgress);
+ // // // Click on progress bar
+ // // progressContainer.addEventListener('click', setProgress);
+ // // // Song ends
+ // // audio.addEventListener('ended', nextSong);
+;
 
 },{}]},["2xDT7","2OD7o"], "2OD7o", "parcelRequire60da")
 

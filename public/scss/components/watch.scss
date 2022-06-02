@@ -1,6 +1,7 @@
 #watch-btn {
     border-radius: 50px;
     cursor: pointer;
+    margin: 0px 10px;
 }
 
 .feature-show {
@@ -8,10 +9,11 @@
 }
 
 #watch {
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     display: none;
     z-index: 1000;
-    border-radius: 32px;
+    border-radius: 32px 32px 0px 0px;
     color: #FCFCFC;
     background-color: #4D7A7A;
     text-align: center;

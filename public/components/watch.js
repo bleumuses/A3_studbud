@@ -2,20 +2,26 @@
 
 const { init } = require("events");
 
-// Make the watch draggable:
-dragElements(document.getElementById("watch"));
+window.onload = function(){ 
 
-function dragElements(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  let draggableWatch = document.getElementById("watch");
-  draggableWatch.onmousedown = dragMouseDown;
+//Make Watch draggagle:
+dragElement(document.getElementById('watch'));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0;
+  if (document.getElementById('watch')) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById('watch').onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
 
   function dragMouseDown(e) {
     e = e || window.event;
     e.preventDefault();
     // get the mouse cursor position at startup:
     pos3 = e.clientX;
-    pos4 = e.clientY;
     document.onmouseup = closeDragElement;
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
@@ -26,16 +32,14 @@ function dragElements(elmnt) {
     e.preventDefault();
     // calculate the new cursor position:
     pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
     pos3 = e.clientX;
-    pos4 = e.clientY;
     // set the element's new position:
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
   }
 
   function closeDragElement() {
-    // stop moving when mouse button is released:
+    /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
   }
@@ -72,6 +76,7 @@ const closeWatchButton = document.getElementById('close-watch');
 // Watch opening event listener
 activateWatchButton.addEventListener('click', () => {
   watch.style.display='block';
+  watch.style.left = '525px';
   activateWatchButton.style.color = '#FCFCFC';
   activateWatchButton.style.backgroundColor = '#4D7A7A';
   activateStopwatchButton.style.color = '#4d7a7a';
@@ -208,9 +213,9 @@ start.addEventListener('click', function(){
   reset.style.color = '#FCFCFC';
   if (wm.innerText <= 0 && ws.innerText == 0) {
     alert("Please enter focus time!")
-  } else if(bm.innerText <= 0 && bs.innerText == 0) {
+  } else if (bm.innerText <= 0 && bs.innerText == 0) {
     alert("Please enter break time!")
-  } else if(startTimer === undefined) {
+  } else if (startTimer === undefined) {
     startTimer = setInterval(timer, 1000)
     focusInputField.value = '';
     breakInputField.value = '';
@@ -222,7 +227,7 @@ start.addEventListener('click', function(){
 
 // User focus time input 
 focusInputField.addEventListener('input', function() {
-  if(startTimer === undefined ) {
+  if (startTimer === undefined ) {
     wm.innerText = focusInputField.value;
      } 
      if (focusInputField.value === undefined) {
@@ -232,7 +237,7 @@ focusInputField.addEventListener('input', function() {
 
 // User break time input 
 breakInputField.addEventListener('input', function() {
-  if(startTimer === undefined ) {
+  if (startTimer === undefined ) {
     bm.innerText = breakInputField.value;
      } 
      if (breakInputField.value === undefined) {
@@ -252,7 +257,7 @@ stop.addEventListener('click', function(){
   stop.style.cursor = 'default';
   start.style.color = '#FCFCFC';
   reset.style.color = '#FCFCFC';
-  if(startTimer != undefined) {
+  if (startTimer != undefined) {
     clearInterval(startTimer);
     startTimer = undefined;
   } else if (startTimer === undefined) {
@@ -276,24 +281,24 @@ reset.addEventListener('click', function(){
 
 // Decrement seconds and minutes after timer starts
 function timer() {
-  if(ws.innerText != 0) {
+  if (ws.innerText != 0) {
     ws.innerText--;
        // add leading zero to break seconds
        if (ws.innerText <10) {
         ws.innerText = `0${ws.innerText}`;
       }
-  }else if(wm.innerText != 0 && ws.innerText == 0) {
+  } else if (wm.innerText != 0 && ws.innerText == 0) {
     ws.innerText = 59;
     wm.innerText--;
   } 
-  if(wm.innerText == 0 && ws.innerText == 0) {
-    if(bs.innerText != 0) {
+  if (wm.innerText == 0 && ws.innerText == 0) {
+    if (bs.innerText != 0) {
       bs.innerText--;
         // Add leading zero to work seconds < 10
         if (bs.innerText <10){
         bs.innerText = `0${bs.innerText}`;
         }
-    } else if(bm.innerText != 0 && bs.innerText == 0){
+    } else if (bm.innerText != 0 && bs.innerText == 0){
       bs.innerText = 59;
       bm.innerText--;
     } else if (bm.innerText == 0 && bs.innerText == 0) {
@@ -312,14 +317,7 @@ function timerEndAlert() {
   const audioSound = document.getElementById('myAudio');
   audioSound.play();
 }
-
-
-
-
-
-
-
-
+}
 
 // Pomodoro
 // const submitSettingsForm = document.getElementById('submitSettings');

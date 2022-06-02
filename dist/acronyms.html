@@ -8,11 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Webpage title -->
-    <title>STUDBUD Kanban</title>
+    <title>STUDBUD Acronyms</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.0e6e900a.png">
+    <!-- Stylesheets -->
     <link href="/index.c74267d1.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script defer="" src="/acronyms.f5a2afd8.js"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -20,6 +23,7 @@
         <ul class="nav-links">
             <li class="nav-item"><a href="/index.html">Tasks</a></li>
             <li class="nav-item"><a href="/acronyms.html" class="active">Acronyms</a></li>
+            <li class="nav-item" id="watch-btn"><i class="fa-solid fa-stopwatch icon-size"></i></li>
         </ul>
         <a href="/index.html"><h1>STUDBUD</h1></a>
     </nav>
@@ -32,7 +36,6 @@
                 <label for="word">Text/Name/Words</label>
                 <input type="text" name="word" id="wordInput" placeholder="Enter what you want to acronymise here" required="">
                 <br>
-                
                 <button class="white-button" id="closeAcroGenForm" type="button">Cancel</button>
                 <!-- Submit -->
                 <button class="green-button" id="submitAcroGenForm" type="submit">Generate</button>
@@ -47,7 +50,6 @@
                 <!-- Acronym input -->
                 <label for="acro">Acronym</label>
                 <input type="text" name="acroWord" id="acroWordInput" placeholder="Enter the acronym of your text/name/words" required="">
-                <br>
                 <!-- Definition input -->
                 <label for="definition">Text/Name/Words</label>
                 <input type="text" name="defintion" id="defintionInput" placeholder="Enter the original definition of your acronym" required="">
@@ -59,6 +61,95 @@
             </form>
         </div>
     </div>
+    <!-- Watch Features -->
+    <div id="watch">
+        <div class="watch-nav">  
+            <button class="watch-toggle" id="stopwatch">Stopwatch</button>
+            <button class="watch-toggle" id="pomodoro">Pomodoro</button>
+            <span id="close-watch">&times;</span>
+        </div>
+        <!-- Stopwatch -->
+        <div id="stopwatch-feature">
+            <i class="fa-solid fa-stopwatch icon-size"></i>
+            <div class="time" id="stopwatch-time">00:00:00</div>
+            <div class="control">
+                <button class="toggle" id="start">
+                    <i class="fa-solid fa-play icon-size"></i>
+                </button>
+                <button id="stop">
+                    <i class="fa-solid fa-pause icon-size"></i>
+                </button>
+                <button id="reset">
+                    <i class="fa-solid fa-arrow-rotate-left icon-size"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Pomodoro -->
+        <div id="pomodoro-feature">
+            <div id="pomodoro-container">
+                <div class="mode" id="focus-mode">Focus Time
+                    <div class="time" id="focus-time">
+                        <h1 id="w-minutes">0</h1><h1>:</h1><h1 id="w-seconds">00</h1>
+                    </div>
+                </div>
+                <div class="mode" id="break-mode">Break Time
+                    <div class="time" id="break-time">
+                        <h1 id="b-minutes">0</h1><h1>:</h1><h1 id="b-seconds">00</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="control">
+                <button id="pomodoro-start">
+                    <i class="fa-solid fa-play icon-size"></i>
+                </button>
+                <button id="pomodoro-stop">
+                    <i class="fa-solid fa-pause icon-size"></i>
+                </button>
+                <button id="pomodoro-reset">
+                    <i class="fa-solid fa-arrow-rotate-left icon-size"></i>
+                </button>
+                <button id="pomodoro-settings-btn">
+                    <i class="fa-solid fa-gear icon-size"></i>
+                </button>
+            </div>
+            <audio id="myAudio">
+                <source src="/bell.85dedd90.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    <!-- Pomodoro Settings -->
+    <div class="settings-modal-container" id="settings-modal-container">
+        <div class="modal" id="pomodoro-settings">
+            <h4>Pomodoro Settings</h4>
+            <form class="settings-form">
+                <label for="focus-duration">Focus Duration</label>
+                <select name="focus-duration" id="focusDurationInput" required="">
+                    <option value="">Select focus duration</option>
+                    <option value="15">15 mins</option>
+                    <option value="20">20 mins</option>
+                    <option value="25">25 mins (Recommended)</option>
+                    <option value="30">30 mins</option>
+                    <option value="45">45 mins</option>
+                </select>
+                <label for="break-duration">Break Duration</label>
+                <select name="break-duration" id="breakDurationInput" required="">
+                    <option value="">Select break duration</option>
+                    <option value="5">5 mins (Recommended)</option>
+                    <option value="10">10 mins</option>
+                    <option value="20">20 mins</option>
+                    <option value="30">30 mins</option>
+                </select>
+                <div id="settings-btns">
+                    <!-- Close -->
+                    <button class="white-button" id="closeSettings" type="button">Cancel</button>
+                    <!-- Submit -->
+                    <button class="green-button" id="submitSettings" type="submit">Done</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    
     <!-- Main webpage content -->
     <main id="page1" class="page-container">
     <!-- Kanban board content -->
@@ -97,6 +188,7 @@
             <button class="green-button" id="addNewAcro">+ Add Acronym</button>
         </div>
     </main>
+    <script src="/acronyms.ff8c9fdb.js" defer=""></script>
 	<script src="/acronyms.af2ed849.js" defer=""></script>
   </body>
 </html>
