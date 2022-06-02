@@ -23,10 +23,11 @@
         <ul class="nav-links">
             <li class="nav-item"><a href="index.html" class="active">Tasks</a></li>
             <li class="nav-item"><a href="acronyms.html">Acronyms</a></li>
-            <li class="nav-item" id="watch-feature"><i class="fa-solid fa-stopwatch icon-size"></i></li>
+            <li class="nav-item" id="watch-btn"><i class="fa-solid fa-stopwatch icon-size"></i></li>
         </ul>
         <a href="index.html"><h1>STUDBUD</h1></a>
     </nav>
+    <!-- Modals -->
     <!-- 'Add new task' Form -->
     <div class="taskform-modal-container" id="taskform-modal-container">
         <div class="modal" id="taskform-modal">
@@ -35,18 +36,15 @@
                 <!--Name input-->
                 <label for="task">Task</label>
                 <input type="text" name="task" id="taskInput" placeholder="Watch lecture, Create notes ..." required>
-                <br>
                 <!-- Task Description Input -->
                 <label for="task description">Task Description</label>
                 <textarea name="task description" id="taskDescriptionInput" placeholder="Write some description for your task..."></textarea>
                 <!-- Date input -->
                 <label for="due date">Due Date</label>
                 <input type="date" name="dueDate" id="dueDateInput">
-                <br>
                 <!-- Time input -->
                 <label for="estimated time">Estimated completion time (in mins)</label>
                 <input type="number" name="estimatedTime" id="estimatedTimeInput">
-                <br>
                 <!-- Priority -->
                 <label for="priority">Task Priority</label>
                 <select name="prority" id="priorityInput" required>
@@ -55,7 +53,6 @@
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
                 </select>
-                <br>
                 <!--Subject-->
                 <label for="subject">Subject</label>
                 <input type="text" name="subject" id="subjectInput" placeholder="What is this subject for?">
@@ -94,16 +91,17 @@
             </form>
         </div>
     </div>
-    <!-- Stopwatch -->
+    <!-- Watch Features -->
     <div id="watch">
         <div class="watch-nav">  
             <button class="watch-toggle" id="stopwatch">Stopwatch</button>
             <button class="watch-toggle" id="pomodoro">Pomodoro</button>
             <span id="close-watch">&times;</span>
         </div>
+        <!-- Stopwatch -->
         <div id="stopwatch-feature">
             <i class="fa-solid fa-stopwatch icon-size"></i>
-            <div class="time">00:00:00</div>
+            <div class="time" id="stopwatch-time">00:00:00</div>
             <div class="control">
                 <button class="toggle" id="start">
                     <i class="fa-solid fa-play icon-size"></i>
@@ -116,18 +114,69 @@
                 </button>
             </div>
         </div>
+        <!-- Pomodoro -->
         <div id="pomodoro-feature">
-            <div class="time">25:00</div>
+            <div id="pomodoro-container">
+                <div class="mode" id="focus-mode">Focus Time
+                    <div class="time" id="focus-time">
+                        <h1 id="w-minutes">0</h1><h1>:</h1><h1 id="w-seconds">00</h1>
+                    </div>
+                </div>
+                <div class="mode" id="break-mode">Break Time
+                    <div class="time" id="break-time">
+                        <h1 id="b-minutes">0</h1><h1>:</h1><h1 id="b-seconds">00</h1>
+                    </div>
+                </div>
+            </div>
             <div class="control">
-                <button id="start">
+                <button id="pomodoro-start">
                     <i class="fa-solid fa-play icon-size"></i>
                 </button>
-                <button id="stop">
+                <button id="pomodoro-stop">
                     <i class="fa-solid fa-pause icon-size"></i>
                 </button>
-                <button id="reset">
+                <button id="pomodoro-reset">
                     <i class="fa-solid fa-arrow-rotate-left icon-size"></i>
                 </button>
+                <button id="pomodoro-settings-btn">
+                    <i class="fa-solid fa-gear icon-size"></i>
+                </button>
+            </div>
+            <audio id="myAudio">
+                <source src="bell.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    <!-- Pomodoro Settings -->
+    <div class="settings-modal-container" id="settings-modal-container">
+        <div class="modal" id="pomodoro-settings">
+            <h4>Pomodoro Settings</h4>
+            <form class ="settings-form">
+                <label for="focus-duration">Focus Duration</label>
+                <select name="focus-duration" id="focusDurationInput" required>
+                    <option value="">Select focus duration</option>
+                    <option value="15">15 mins</option>
+                    <option value="20">20 mins</option>
+                    <option value="25">25 mins</option>
+                    <option value="30">30 mins</option>
+                    <option value="45">45 mins</option>
+                </select>
+                <label for="break-duration">Break Duration</label>
+                <select name="break-duration" id="breakDurationInput" required>
+                    <option value="">Select break duration</option>
+                    <option value="5">5 mins</option>
+                    <option value="10">10 mins</option>
+                    <option value="20">20 mins</option>
+                    <option value="30">30 mins</option>
+                </select>
+                <div id="settings-btns">
+                    <!-- Close -->
+                    <button class="white-button" id="closeSettings" type="button">Cancel</button>
+                    <!-- Submit -->
+                    <button class="green-button" id="submitSettings" type="submit">Done</button>
+                </div>
+            </form>
             </div>
         </div>
     </div>

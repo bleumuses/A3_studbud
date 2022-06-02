@@ -39,7 +39,7 @@ taskform.addEventListener("submit", function(event) {
     taskModal.classList.remove('show');
 })
 
-// Attempt to record the colour user has selected to set the task header's colour
+// Attempt to record the colour user has selected to set the task header's colour (inspired by https://codepen.io/kylewetton/pen/bGbobMa?editors=1111)
 // Able to get the colour but failed to set the colour (see more below)
 // const colorButton = document.querySelectorAll('.color');
 

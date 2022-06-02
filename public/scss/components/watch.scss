@@ -1,4 +1,4 @@
-#watch-feature {
+#watch-btn {
     border-radius: 50px;
     cursor: pointer;
 }
@@ -27,6 +27,7 @@
 }
 
 .watch-nav span {
+    color: #FCFCFC;
     cursor: pointer;
     &:hover {
         color: #5E9797;
@@ -58,12 +59,35 @@
     display: none;
 }
 
+#pomodoro-settings {
+    background-color: #FCFCFC;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, .25);
+}
+
+#pomodoro-settings > h4 {
+    margin-bottom: 20px;
+    }
+
+#pomodoro-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.time > h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #FCFCFC;
+}
+
 .time {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     color: #FCFCFC;
-    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px; 
 }
+
 
 .control {
     display: flex;
@@ -80,3 +104,15 @@
         color:#5E9797;
     }
 }
+
+#settings-btns {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.mode {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+

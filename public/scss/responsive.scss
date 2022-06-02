@@ -1,7 +1,7 @@
 /* If the screen size 8is 2560px wide or less, set the following styling to certain elements */
 @media screen and (max-width: 2560px) {
-    .green-button {
-        padding: 10px 40px;
+    .green-button, .white-button, .white-outine-button {
+        padding: 10px 30px;
         margin-right: 20px;
     }
     nav {
@@ -27,7 +27,8 @@
     }
 
     input, select, textarea {
-        margin-top: 10px;
+        margin-top: 5px;
+        margin-bottom: 20px;
         font-size: 0.8rem;
     }
 
@@ -56,13 +57,13 @@
         max-width: 400px;
     }
 
-    #watch-feature {
+    #watch-btn {
         padding: 8px 20px;
     }
 
     .watch-nav {
         padding-top: 10px;
-        padding-bottom: 30px;
+        padding-bottom: 20px;
     }
 
     .watch-nav span {
@@ -85,6 +86,10 @@
 
     .icon-size { 
         font-size: 28px;
+    }
+
+    .mode {
+        font-size: 1rem;
     }
 }
 
@@ -137,6 +142,7 @@
 
     input, select, textarea {
         margin-top: 5px;
+        margin-bottom: 10px;
         font-size: 0.8rem;
     }
 
@@ -241,7 +247,7 @@
         max-width: fit-content;
     }
 
-    #watch-feature {
+    #watch-btn {
         padding: 5px 15px;
     }
 
@@ -271,5 +277,9 @@
 
     .icon-size { 
         font-size: 24px;
+    }
+
+    .mode {
+        font-size: 0.8rem;
     }
 }

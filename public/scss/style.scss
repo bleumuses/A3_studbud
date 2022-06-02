@@ -39,8 +39,23 @@ button {
     color: #4D7A7A;
     background-color: #FCFCFC;
     font-weight: 700;
-    padding: 10px 40px;
     border: 4px solid #4D7A7A;
+    &:hover {
+        color: #5E9797;
+        border: 4px solid #5E9797;
+        transform: translateY(-2px);
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, .15);
+    }
+    &:active, :focus {
+        outline: 0;
+    }
+}
+
+.white-outine-button {
+    color: #FCFCFC;
+    background-color: transparent;
+    font-weight: 700;
+    border: 4px solid #FCFCFC;
     &:hover {
         color: #5E9797;
         border: 4px solid #5E9797;

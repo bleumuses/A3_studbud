@@ -130,7 +130,6 @@ button {
   color: #4d7a7a;
   background-color: #fcfcfc;
   border: 4px solid #4d7a7a;
-  padding: 10px 40px;
   font-weight: 700;
 }
 
@@ -142,6 +141,24 @@ button {
 }
 
 .white-button:active, .white-button :focus {
+  outline: 0;
+}
+
+.white-outine-button {
+  color: #fcfcfc;
+  background-color: #0000;
+  border: 4px solid #fcfcfc;
+  font-weight: 700;
+}
+
+.white-outine-button:hover {
+  color: #5e9797;
+  border: 4px solid #5e9797;
+  transform: translateY(-2px);
+  box-shadow: 2px 4px 10px #00000026;
+}
+
+.white-outine-button:active, .white-outine-button :focus {
   outline: 0;
 }
 
@@ -157,9 +174,9 @@ button {
 }
 
 @media screen and (max-width: 2560px) {
-  .green-button {
+  .green-button, .white-button, .white-outine-button {
     margin-right: 20px;
-    padding: 10px 40px;
+    padding: 10px 30px;
   }
 
   nav {
@@ -184,7 +201,8 @@ button {
   }
 
   input, select, textarea {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
     font-size: .8rem;
   }
 
@@ -211,13 +229,13 @@ button {
     max-width: 400px;
   }
 
-  #watch-feature {
+  #watch-btn {
     padding: 8px 20px;
   }
 
   .watch-nav {
     padding-top: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
   }
 
   .watch-nav span {
@@ -240,6 +258,10 @@ button {
 
   .icon-size {
     font-size: 28px;
+  }
+
+  .mode {
+    font-size: 1rem;
   }
 }
 
@@ -290,6 +312,7 @@ button {
 
   input, select, textarea {
     margin-top: 5px;
+    margin-bottom: 10px;
     font-size: .8rem;
   }
 
@@ -387,7 +410,7 @@ button {
     left: 0;
   }
 
-  #watch-feature {
+  #watch-btn {
     padding: 5px 15px;
   }
 
@@ -417,6 +440,10 @@ button {
 
   .icon-size {
     font-size: 24px;
+  }
+
+  .mode {
+    font-size: .8rem;
   }
 }
 
@@ -6546,7 +6573,7 @@ p {
   color: #5e9797;
 }
 
-.taskform-modal-container, .columnform-modal-container, .acrogen-modal-container, .acro-modal-container {
+.taskform-modal-container, .columnform-modal-container, .acrogen-modal-container, .acro-modal-container, .settings-modal-container {
   opacity: 0;
   width: 100vw;
   height: 100vh;
@@ -6561,7 +6588,7 @@ p {
   left: 0;
 }
 
-.show, .acrogen-modal-container.show {
+.show, .acrogen-modal-container.show, .settings-modal-container.show {
   pointer-events: auto;
   opacity: 1;
   z-index: 1000;
@@ -6660,7 +6687,7 @@ p {
   font-size: 12px;
 }
 
-#watch-feature {
+#watch-btn {
   cursor: pointer;
   border-radius: 50px;
 }
@@ -6688,6 +6715,7 @@ p {
 }
 
 .watch-nav span {
+  color: #fcfcfc;
   cursor: pointer;
 }
 
@@ -6722,11 +6750,33 @@ p {
   display: none;
 }
 
-.time {
+#pomodoro-settings {
+  background-color: #fcfcfc;
+  box-shadow: 2px 4px 10px #00000040;
+}
+
+#pomodoro-settings > h4 {
+  margin-bottom: 20px;
+}
+
+#pomodoro-container {
+  justify-content: space-around;
+  display: flex;
+}
+
+.time > h1 {
   color: #fcfcfc;
-  padding-bottom: 10px;
   font-family: Inter, sans-serif;
   font-weight: 700;
+}
+
+.time {
+  color: #fcfcfc;
+  justify-content: center;
+  padding-bottom: 20px;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  display: flex;
 }
 
 .control {
@@ -6744,6 +6794,17 @@ p {
 
 .control button:hover {
   color: #5e9797;
+}
+
+#settings-btns {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.mode {
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 /*# sourceMappingURL=index.c74267d1.css.map */
