@@ -14,14 +14,14 @@
     margin-right: 30px;
 }
 
-#kanban-column h1 {
-    font-size: 24px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    cursor: text;
-    }
-    h2 {
+#kanban-column h2 {
         cursor: text;
+    }
+    span {
+        color: #5E9797;
+        padding-left: 20px;
+        font-size: 1rem;
+        font-weight: 400;
     }
 
 #column-heading {
@@ -42,22 +42,22 @@
     display: flex;
     flex-direction: column;
     background-color: #FCFCFC;
-    box-shadow: -9px 10px 17px rgba(0, 0, 0, 0.25);
+    box-shadow: -9px 10px 15px rgba(77, 122, 122, 0.15);
     border: none;
     border-radius: 5px;
-    width: 230px;
+    width: 250px;
     transition: all 0.2s ease-in;
     overflow: hidden;
     margin-bottom: 20px;
     &:hover {
-        box-shadow: -9px 10px 17px rgba(0, 0, 0, .5);
+        box-shadow: -9px 10px 17px rgba(77, 122, 122, .25);
     }
     &:active {
         cursor: grabbing;
     }
     h2 {
         font-size: 16px;
-        margin-bottom: 0px;
+        margin-bottom: 10px;
     }
     h3 {
         font-size: 12px;
@@ -71,15 +71,13 @@
 
 // Draggable Task Card styling
 #card-header {
-    background-color: #BC4B51;
-    color: #FCFCFC;
-    padding: 20px;
-    margin-bottom: 20px;
+    background-color: #FCFCFC;
+    color: #4D7A7A;
+    padding: 20px 20px 0px 20px;
     } 
     h3 {
-    margin-bottom: 10px;
-    font-weight: 400;
-    cursor: text;
+        font-weight: 400;
+        cursor: text;
 }
 
 #card-content {
@@ -95,15 +93,24 @@
     cursor: text;
 }
 
+#priority {
+    color: #FCFCFC;
+    background-color: #4D7A7A;
+    max-width: fit-content;
+    padding: 5px 10px;
+    border-radius: 50px;
+}
+
 // Button to delete Task Cards styling
 .deleteCard {
     font-size: 1rem;
     position: absolute;
     right: 1rem;
     top: 0.8rem;
+    color: #4D7A7A;
     cursor: pointer; 
     &:hover {
-        color: #ECECEC;
+        color: #5E9797;
     }
 }
 

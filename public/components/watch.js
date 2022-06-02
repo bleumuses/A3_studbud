@@ -40,6 +40,20 @@ function dragElement(elmnt) {
 
 //Stopwatch
 
+// Attempt to toggle play/pause button but was advised by tutor to keep them as two separate buttons
+// let btn = document.querySelector('.toggle');
+// let icon = btn.querySelector('.fa-play');
+// console.log(btn);
+// btn.addEventListener('click', () => {
+//   console.log('button clicked');
+//   if (icon.classList.contains('fa-play')) {
+//     icon.classList.replace('fa-play', 'fa-pause');
+//   }
+//   else {
+//     icon.classList.replace('fa-pause', 'fa-play');
+//   }
+// })
+
 //Global Variables
 // const watch = document.getElementById('watch');
 const activateWatchButton = document.getElementById('watch-feature');

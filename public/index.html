@@ -14,6 +14,7 @@
     <link href="scss/main.scss" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Icons -->
+    <script defer src="./components/all.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
   <body>
@@ -22,7 +23,7 @@
         <ul class="nav-links">
             <li class="nav-item"><a href="index.html" class="active">Tasks</a></li>
             <li class="nav-item"><a href="acronyms.html">Acronyms</a></li>
-            <li class="nav-item material-symbols-outlined" id="watch-feature">timer</li>
+            <li class="nav-item" id="watch-feature"><i class="fa-solid fa-stopwatch icon-size"></i></li>
         </ul>
         <a href="index.html"><h1>STUDBUD</h1></a>
     </nav>
@@ -35,24 +36,20 @@
                 <label for="task">Task</label>
                 <input type="text" name="task" id="taskInput" placeholder="Watch lecture, Create notes ..." required>
                 <br>
+                <!-- Task Description Input -->
+                <label for="task description">Task Description</label>
+                <textarea name="task description" id="taskDescriptionInput" placeholder="Write some description for your task..."></textarea>
                 <!-- Date input -->
-                <label for="dueDate">Due Date</label>
+                <label for="due date">Due Date</label>
                 <input type="date" name="dueDate" id="dueDateInput">
                 <br>
-                <!--Completion Status-->
-                <label for="completion status">Completion Status</label>
-                <select name="completion status" id="completionStatusInput">
-                <option value="">Incomplete</option>
-                <option value="Complete">Complete</option>
-                </select>
-                <br>
                 <!-- Time input -->
-                <label for="estimatedTime">Estimated completion time (in mins)</label>
+                <label for="estimated time">Estimated completion time (in mins)</label>
                 <input type="number" name="estimatedTime" id="estimatedTimeInput">
                 <br>
                 <!-- Priority -->
                 <label for="priority">Task Priority</label>
-                <select name="prority" id="priorityInput">
+                <select name="prority" id="priorityInput" required>
                 <option value="">Select one</option>
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
@@ -105,25 +102,17 @@
             <span id="close-watch">&times;</span>
         </div>
         <div id="stopwatch-feature">
-            <span class="material-symbols-outlined icon-size">
-                timer
-            </span>
+            <i class="fa-solid fa-stopwatch icon-size"></i>
             <div class="time">00:00:00</div>
             <div class="control">
-                <button id="start">
-                    <span class="material-symbols-outlined icon-size">
-                        play_arrow
-                    </span>
+                <button class="toggle" id="start">
+                    <i class="fa-solid fa-play icon-size"></i>
                 </button>
                 <button id="stop">
-                    <span class="material-symbols-outlined icon-size">
-                    pause
-                    </span>
+                    <i class="fa-solid fa-pause icon-size"></i>
                 </button>
                 <button id="reset">
-                    <span class="material-symbols-outlined icon-size">
-                    replay
-                    </span>
+                    <i class="fa-solid fa-arrow-rotate-left icon-size"></i>
                 </button>
             </div>
         </div>
@@ -131,19 +120,13 @@
             <div class="time">25:00</div>
             <div class="control">
                 <button id="start">
-                    <span class="material-symbols-outlined icon-size">
-                        play_arrow
-                    </span>
+                    <i class="fa-solid fa-play icon-size"></i>
                 </button>
                 <button id="stop">
-                    <span class="material-symbols-outlined icon-size">
-                    pause
-                    </span>
+                    <i class="fa-solid fa-pause icon-size"></i>
                 </button>
                 <button id="reset">
-                    <span class="material-symbols-outlined icon-size">
-                    replay
-                    </span>
+                    <i class="fa-solid fa-arrow-rotate-left icon-size"></i>
                 </button>
             </div>
         </div>

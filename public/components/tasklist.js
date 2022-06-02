@@ -8,6 +8,7 @@ const tasklist = document.querySelector('.container');
 
 // DOM elements for the task input fields
 var taskInput = document.getElementById('taskInput');
+var taskDescriptionInput = document.getElementById('taskDescriptionInput');
 var dueDateInput = document.getElementById('dueDateInput');
 var estimatedTimeInput = document.getElementById('estimatedTimeInput');
 var priorityInput = document.getElementById('priorityInput');
@@ -27,12 +28,13 @@ closeTaskButton.addEventListener('click', () => {
 taskform.addEventListener("submit", function(event) {
     event.preventDefault();
     let task = taskInput.value;
+    let taskDescription = taskDescriptionInput.value;
     let dueDate = dueDateInput.value;
     let estimatedTime = estimatedTimeInput.value;
     let priorityRating = priorityInput.options[priorityInput.selectedIndex].value;
     let subjectName = subjectInput.value;
     if (task) {
-        addTask(task, dueDate, estimatedTime, priorityRating, false, subjectName);
+        addTask(task, taskDescription, dueDate, estimatedTime, priorityRating, false, subjectName);
     }
     taskModal.classList.remove('show');
 })
@@ -54,10 +56,11 @@ taskform.addEventListener("submit", function(event) {
 var taskListArray = [];
 
 // Function to add task with user inputs as parameters
-function addTask(taskDescription, dueDate, estimatedTime, priorityRating, completionStatus, subjectName) {
+function addTask(taskTitle, taskDescription, dueDate, estimatedTime, priorityRating, completionStatus, subjectName) {
     let dateCreated = (new Date()).toLocaleDateString('en-US');
     let task = {
         id: Date.now(),
+        taskTitle,
         taskDescription,
         dueDate,
         dateCreated,
@@ -84,36 +87,42 @@ function renderTask(task) {
     let heading = document.createElement('div');
     heading.setAttribute('id', 'card-header');
     
-    let subject = document.createElement('h3');
-    subject.textContent = task.subjectName;
+    let subject = document.createElement('div');
+    subject.innerHTML = '<p>' + '<b>' + 'Subject: ' + '</b>' + task.subjectName + '</p>';
     subject.setAttribute('contenteditable', 'true');
 
     let taskTitle = document.createElement('h2');
-    taskTitle.textContent = task.taskDescription;
+    taskTitle.textContent = task.taskTitle;
     taskTitle.setAttribute('contenteditable', 'true');
+
+    let priority = document.createElement('p');
+    priority.textContent = task.priorityRating;
+    priority.setAttribute('contenteditable', 'true');
+    priority.setAttribute('id', 'priority');
 
     let delCard = document.createElement('span');
     let delCardText = document.createTextNode('\u00d7');
     delCard.classList.add('deleteCard');
     delCard.appendChild(delCardText);
 
+    let description = document.createElement('div');
+    description.innerHTML = '<p>' + '<b>' + 'Description: ' + '</b>' + task.taskDescription + '</p>';
+    description.setAttribute('contenteditable', 'true');
+
     // Append card's heading elements to card header
-    heading.appendChild(subject);
+    heading.appendChild(priority);
     heading.appendChild(delCard);
     heading.appendChild(taskTitle);
+    heading.appendChild(subject);
+    heading.appendChild(description);
 
     // Card content
     let content = document.createElement('div');
     content.setAttribute('id','card-content');
 
-    let due = document.createElement('p');
-    due.textContent = task.dueDate;
+    let due = document.createElement('div');
+    due.innerHTML = '<p>' + '<b>' + 'Due: ' + '</b>' + task.dueDate + '</p>';
     due.setAttribute('contenteditable', 'true');
-
-
-    let priority = document.createElement('p');
-    priority.textContent = task.priorityRating;
-    priority.setAttribute('contenteditable', 'true');
 
 
     let time = document.createElement('p');
@@ -125,7 +134,6 @@ function renderTask(task) {
     // Append card's content elements to card content
     content.appendChild(due);
     content.appendChild(time);
-    content.appendChild(priority);
 
     // Append heading and content to card
     card.appendChild(heading);

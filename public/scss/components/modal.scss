@@ -30,8 +30,6 @@
 // Generall Modal styling
 .modal {
     margin: auto;
-    padding: 40px;
-    border-radius: 32px;
     background-color: #FCFCFC;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, .25);
 }
@@ -45,21 +43,12 @@ form > h3 {
 label {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 16px;
     color: #4D7A7A;
 }
 
 input, select, textarea {
-    // margin: 10px;
-    // color: #5E9797;
-    // font-family: 'Inter', sans-serif;
-    // font-weight: 500;
-    // font-size: 14px;
-    // transition: all 0.2s ease-in;
     color: #5e9797;
-    margin-top: 10px;
     font-family: Inter, sans-serif;
-    font-size: 14px;
     font-weight: 500;
     transition: all .2s ease-in;
     width: 100%;
@@ -71,7 +60,6 @@ input, select, textarea {
         cursor: pointer;
     }
 }
-
 
 input {
     background-color: #FCFCFC;
@@ -89,9 +77,8 @@ input {
 }
 
 ::placeholder {
-    color: #5E9797;
-    font-size: 0.9rem;
-  }
+    color: #5e9797;
+}
 
 input:focus::placeholder {
     color: transparent;
@@ -104,7 +91,6 @@ select {
     -moz-appearance: none !important;
     -webkit-appearance: none !important; 
     appearance: none !important;
-    padding: 10px 2rem 10px 15px !important;
     color: #5E9797;
     background-color: #FCFCFC;
     border: 2px solid #5E9797;

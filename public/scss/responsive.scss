@@ -15,14 +15,49 @@
         margin: 10px;
     }
 
+    // Modal
+
+    .modal {
+        padding: 30px 40px 30px 40px;
+        border-radius: 32px;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+
+    input, select, textarea {
+        margin-top: 10px;
+        font-size: 0.8rem;
+    }
+
+    textarea {
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    select {
+        padding: 10px 2rem 10px 15px !important;
+    }
+
+    ::placeholder {
+        font-size: 0.9rem;
+    }
+
+    // Kanban Feature
     #kanban {
         padding: 30px 30px 0px 30px;
     }
 
+    // Watch Feature
     #watch {
         width: 100%;
         min-width: 120px;
         max-width: 400px;
+    }
+
+    #watch-feature {
+        padding: 8px 20px;
     }
 
     .watch-nav {
@@ -49,7 +84,7 @@
     }
 
     .icon-size { 
-        font-size: 36px !important;
+        font-size: 28px;
     }
 }
 
@@ -72,17 +107,49 @@
     h3 {
         font-size: 1.2rem;
     }
-    .green-button {
+
+    .green-button, .white-button {
+        font-size: 0.8rem;
         padding: 10px 25px;
         margin-right: 10px;
+        margin-bottom: 10px;
     }
+
     nav {
         padding: 40px 20px;
     }
+
     .nav-item a {
         padding: 10px 25px;
         margin: 10px;
         border: 2px;
+    }
+
+    // Modal
+    .modal {
+        padding: 20px 30px 10px 30px;
+        border-radius: 20px;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+        margin-top: 5px;
+        font-size: 0.8rem;
+    }
+
+    textarea {
+        margin-bottom: 10px;
+    }
+
+    select {
+        padding: 10px 2rem 10px 15px !important;
+    }
+
+    ::placeholder {
+        font-size: 0.8rem;
     }
 }
 
@@ -105,7 +172,8 @@
     h3 {
         font-size: 1rem;
     }
-    .green-button {
+
+    .green-button, .white-button {
         font-size: 0.8rem;
         padding: 8px 15px;
         margin-right: 5px;
@@ -132,16 +200,51 @@
         padding: 20px 10px;
     }
 
+    // Kanban
     #kanban {
         padding: 0px;
     }
 
+    // Modal
+    .modal {
+        padding: 30px 30px 20px 30px;
+        border-radius: 15px;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
+    input, select, textarea {
+        margin-top: 5px;
+        font-size: 0.7rem;
+    }
+
+    textarea {
+        margin-bottom: 10px;
+    }
+
+    select {
+        padding: 10px 2rem 10px 15px !important;
+    }
+
+    ::placeholder {
+        font-size: 0.7rem;
+    }
+
+
+    // Watch Feature
     #watch {
         left: 0px;
         width: 100%;
         min-width: 80px;
         max-width: fit-content;
     }
+
+    #watch-feature {
+        padding: 5px 15px;
+    }
+
     .watch-nav {
         padding-top: 0px;
         padding-bottom: 10px;
@@ -167,6 +270,6 @@
     }
 
     .icon-size { 
-        font-size: 24px !important;
+        font-size: 24px;
     }
 }
