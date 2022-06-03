@@ -23,6 +23,7 @@
         <ul class="nav-links">
             <li class="nav-item"><a href="/index.html">Tasks</a></li>
             <li class="nav-item"><a href="/acronyms.html" class="active">Acronyms</a></li>
+            <li class="nav-item" id="music-btn"><i class="fa-solid fa-music icon-size"></i></li>
             <li class="nav-item" id="watch-btn"><i class="fa-solid fa-stopwatch icon-size"></i></li>
         </ul>
         <a href="/index.html"><h1>STUDBUD</h1></a>
@@ -45,19 +46,34 @@
     <!-- 'Add new acronym' Form -->
     <div class="acro-modal-container" id="acro-modal-container">
         <div class="modal" id="acro-modal">
-            <form id="acronym">
+            <form id="acro">
                 <h3>Add New Acronym</h3>
                 <!-- Acronym input -->
                 <label for="acro">Acronym</label>
                 <input type="text" name="acroWord" id="acroWordInput" placeholder="Enter the acronym of your text/name/words" required="">
                 <!-- Definition input -->
                 <label for="definition">Text/Name/Words</label>
-                <input type="text" name="defintion" id="defintionInput" placeholder="Enter the original definition of your acronym" required="">
+                <input type="text" name="defintion" id="acroDefinitionInput" placeholder="Enter the original definition of your acronym" required="">
                 <br>
                 <!-- Close -->
                 <button class="white-button" id="closeAcroForm" type="button">Cancel</button>
                 <!-- Submit -->
                 <button class="green-button" id="submitAcroForm" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+      <!-- 'Add new column' Form -->
+      <div class="acro-col-modal-container" id="acro-col-modal-container">
+        <div class="modal" id="acro-col-modal">
+            <form id="acro-col-form">
+                <h3>Add New Column</h3>
+                <!-- Column Title input -->
+                <label for="acroCol">Column Title</label>
+                <input type="text" name="acroCol" id="acroColTitleInput" placeholder="English, Math, Science..." required="">
+                <!-- Close -->
+                <button class="white-button" id="closeAcroColForm" type="button">Cancel</button>
+                <!-- Submit -->
+                <button class="green-button" id="submitAcroColForm" type="submit">Add</button>
             </form>
         </div>
     </div>
@@ -159,7 +175,7 @@
                 <h2 contenteditable="true">&#128290 maths</h2>
                 <hr>
                 <!-- Container to contain and allow task cards to be dropped in -->
-                <div class="container">
+                <div class="acro-container">
                     <!-- Content will be dynamically loaded from local storage -->
                 </div>
             </div>
@@ -168,7 +184,7 @@
                 <h2 contenteditable="true">&#129514 chem</h2>
                 <hr>
                 <!-- Container to contain and allow task cards to be dropped in -->
-                <div class="container">
+                <div class="acro-container">
                     <!-- Content will be dynamically loaded from local storage -->
                 </div>
             </div>
@@ -177,7 +193,7 @@
                 <h2 contenteditable="true">&#127759 geo</h2>
                 <hr>
                 <!-- Container to contain and allow task cards to be dropped in -->
-                <div class="container">
+                <div class="acro-container">
                     <!-- Content will be dynamically loaded from local storage -->
                 </div>
             </div>
@@ -186,9 +202,57 @@
         <div id="add-button">
             <button class="green-button" id="genNewAcro">+ Generate Acronym</button>
             <button class="green-button" id="addNewAcro">+ Add Acronym</button>
+            <button class="green-button" id="addNewAcroCol">+ Add Column</button>
         </div>
+        <!-- Music Player -->
+        <div class="music-container" id="music-container">
+            <div id="song-container">
+            <div id="song1">
+                <div class="img-container">
+                <img src="/I-cant-make-you-love-me.24762dd7.jpeg" alt="music-cover" id="cover">
+                </div>
+                <div class="audio-container">
+                    <div id="song-info">I can't make you love me<span>  KINDA BLUE, Hwasa</span></div>
+                    <audio controls="" src="/I-cant-make-you-love-me.6ec5316d.mp3" id="audio">
+                        Your browser does not support the
+                        <code>audio</code> element.
+                    </audio>
+                </div>
+            </div>
+            <div id="song2">
+                <div class="img-container">
+                    <img src="/Movie.fff061a0.jpeg" alt="music-cover" id="cover2">
+                </div>
+                <div class="audio-container">
+                    <div id="song-info">Movie<span>  Tom Misch</span></div>
+                    <audio controls="" src="/Movie.0a8c200f.mp3" id="audio">
+                        Your browser does not support the
+                        <code>audio</code> element.
+                    </audio>
+                </div>
+            </div>
+            <div id="song3">
+                <div class="img-container">
+                <img src="/Thats-OK.208a124a.jpeg" alt="music-cover" id="cover">
+                </div>
+                <div class="audio-container">
+                    <div id="song-info">That's OK<span>  D.O.</span></div>
+                    <audio controls="" src="/Thats-OK.6942684d.mp3" id="audio">
+                        Your browser does not support the
+                        <code>audio</code> element.
+                    </audio>
+                </div>
+            </div>
+        </div>
+            <span id="close-music">
+                &times;
+            </span>
+            </div>
+        
     </main>
+    <script src="/acronyms.6ca271c3.js" defer=""></script>
     <script src="/acronyms.ff8c9fdb.js" defer=""></script>
 	<script src="/acronyms.af2ed849.js" defer=""></script>
+    <script src="/acronyms.23775520.js" defer=""></script>
   </body>
 </html>

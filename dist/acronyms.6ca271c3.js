@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"aAqkz":[function(require,module,exports) {
+})({"9pACa":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "c250a335af2ed849";
+module.bundle.HMR_BUNDLE_ID = "8d5387406ca271c3";
 function _toConsumableArray(arr) {
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
@@ -525,143 +525,128 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"b1cMg":[function(require,module,exports) {
-// Generate New Acronym 
-const genAcroModal = document.getElementById('acrogen-modal-container');
-const acroGenForm = document.getElementById('acrogen');
-const addAcroGenBtn = document.getElementById('genNewAcro');
-const closeAcroGenBtn = document.getElementById('closeAcroGenForm');
-const acroList = document.querySelector('.acro-container');
-addAcroGenBtn.addEventListener('click', ()=>{
-    genAcroModal.classList.add('show');
+},{}],"2Z4jX":[function(require,module,exports) {
+const musicContainer = document.getElementById('music-container');
+const activateMusicPlayer = document.getElementById('music-btn');
+const closeMusicPlayerBtn = document.getElementById('close-music');
+// const playBtn = document.getElementById('play');
+// const pauseBtn = document.getElementById('pause');
+// const prevBtn = document.getElementById('prev');
+// const skipBtn = document.getElementById('skip');
+// const audio = document.getElementById('audio');
+// const progress = document.getElementById('progress');
+// const progressContainer = document.getElementById('progress-container');
+// const title = document.getElementById('title');
+// const cover = document.getElementById('cover');
+// Music Player opening event listener
+activateMusicPlayer.addEventListener('click', ()=>{
+    musicContainer.style.display = 'flex';
+    activateMusicPlayer.style.color = '#FCFCFC';
+    activateMusicPlayer.style.backgroundColor = '#4D7A7A';
+    document.getElementById('song1').style.display = 'flex';
 });
-closeAcroGenBtn.addEventListener('click', ()=>{
-    genAcroModal.classList.remove('show');
-});
-var wordInput = document.getElementById('wordInput');
-// Generate new acronym form submission event listener
-acroGenForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    let str = wordInput.value;
-    if (str) buildAcro(str);
-    genAcroModal.classList.remove('show');
-});
-// Add New Acronym
-const acroModal = document.getElementById('acro-modal-container');
-const acroForm = document.getElementById('acro');
-const addAcroBtn = document.getElementById('addNewAcro');
-const closeAcroBtn = document.getElementById('closeAcroForm');
-addAcroBtn.addEventListener('click', ()=>{
-    acroModal.classList.add('show');
-});
-closeAcroBtn.addEventListener('click', ()=>{
-    acroModal.classList.remove('show');
-});
-var acroWordInput = document.getElementById('acroWordInput');
-var acroDefinitionInput = document.getElementById('acroDefinitionInput');
-// Generate new acronym form submission event listener
-acroForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    let acro = acroWordInput.value;
-    let acroDefinition = acroDefinitionInput.value;
-    if (acro) addAcro(acro, acroDefinition);
-    acroModal.classList.remove('show');
-});
-var acroListArray = [];
-function addAcro(acroWord, acroDefinition) {
-    let dateCreated = new Date().toLocaleDateString('en-US');
-    let acro = {
-        id: Date.now(),
-        dateCreated,
-        acroWord,
-        acroDefinition
-    };
-    acroListArray.push(acro);
-    console.log(acroListArray);
-    renderAcro(acro);
-}
-function renderAcro(acro1) {
-    //Acronym card container
-    let acroCard = document.createElement('div');
-    acroCard.classList.add('draggable');
-    acroCard.setAttribute('id', acro1.id);
-    acroCard.setAttribute('draggable', 'true');
-    //Acronym card header
-    let acroCardHeader = document.createElement('div');
-    acroCardHeader.setAttribute('id', 'acrocard-header');
-    let acroWord = document.createElement('h2');
-    acroWord.textContent = acro1.acroWord;
-    acroWord.setAttribute('contenteditable', 'true');
-    const expandBtn = document.createElement('button');
-    const expandIcon = document.createElement('i');
-    expandIcon.setAttribute('class', 'fa-solid fa-caret-down');
-    expandBtn.appendChild(expandIcon);
-    // Append acronym card's heading element to card header
-    acroCardHeader.appendChild(acroWord);
-    acroCardHeader.appendChild(expandBtn);
-    //Acronym card content
-    let acroCardContent = document.createElement('div');
-    acroCardContent.setAttribute('class', 'def-hide');
-    acroCardContent.setAttribute('id', 'acrocard-content');
-    const deltBtn = document.createElement('button');
-    const deltIcon = document.createElement('i');
-    deltIcon.setAttribute('class', 'fa-solid fa-trash-can');
-    deltBtn.appendChild(deltIcon);
-    let acroDefinition = document.createElement('p');
-    acroDefinition.textContent = acro1.acroDefinition;
-    acroDefinition.setAttribute('contenteditable', 'true');
-    // Append acronym card's content element to card header
-    acroCardContent.appendChild(acroDefinition);
-    acroCardContent.appendChild(deltBtn);
-    acroCard.appendChild(acroCardHeader);
-    acroCard.appendChild(acroCardContent);
-    acroList.appendChild(acroCard);
-    // Delete task card when user clicks delete button 
-    deltBtn.addEventListener('click', ()=>{
-        const check = confirm('Are you sure you want to delete this card?');
-        let id = event.target.parentElement.getAttribute('data-id');
-        let index = acroListArray.findIndex((acro)=>acro.id === Number(id)
-        );
-        if (check) {
-            removeItemFromArray(acroListArray, index);
-            console.log(acroListArray);
-            acroCard.remove();
-        }
-    });
-    expandBtn.addEventListener('click', ()=>{
-        expandIcon.classList.toggle('fa-caret-up');
-        acroCardContent.classList.toggle('def-show');
-    });
-    // Function to allow cards to be dragged and dropped between columns
-    // Adapted from https://codepen.io/WebDevSimplified/pen/JjdveeV 
-    const draggables = document.querySelectorAll('.draggable');
-    // Add 'dragging' class to provide feedback when the user starts dragging card
-    draggables.forEach((draggable)=>{
-        draggable.addEventListener('dragstart', ()=>{
-            draggable.classList.add('dragging');
-        });
-        // Remove 'dragging' class to provide feedback when the user stops dragging card
-        draggable.addEventListener('dragend', ()=>{
-            draggable.classList.remove('dragging');
-        });
-    });
-    acroForm.reset();
-    acroGenForm.reset();
-}
-// Function to remove item from array
-function removeItemFromArray(arr, index) {
-    if (index > -1) arr.splice(index, 1);
-    return arr;
-}
-function buildAcro(str) {
-    const wordArr = str.split(' ');
-    const firstLetters = wordArr.map((word)=>word[0]
-    );
-    const acroWord = firstLetters.join('');
-    const res = acroWord.toUpperCase();
-    addAcro(res, str);
-}
+// Close Music Player Modal
+closeMusicPlayerBtn.addEventListener('click', ()=>{
+    musicContainer.style.display = 'none';
+    activateMusicPlayer.style.color = '#4D7A7A';
+    activateMusicPlayer.style.backgroundColor = '#FCFCFC';
+}) // Adapted from https://github.com/bradtraversy/vanillawebprojects/tree/master/music-player
+ // // Song titles
+ // const songs = [
+ //     {
+ //       path: './music/I-cant-make-you-love-me.mp3',
+ //       songName: "I can't make you love me",
+ //       cover: './music-cover/I-cant-make-you-love-me.jpeg'
+ //     },
+ //     {
+ //       path: './music/Movie.mp3',
+ //       songName: "Movie",
+ //       cover: './music-cover/Movie.jpeg'
+ //     },
+ //     {
+ //       path: './music/Thats-OK.mp3',
+ //       songName: "That's OK",
+ //       cover: './music-cover/Thats-OK.jpeg'
+ //     }
+ // ];
+ // // Update song details
+ // function loadSong(songs) {
+ //   title.innerText = songs.songName;
+ //   audio.src = songs.path;
+ //   cover.src = songs.cover;
+ // }
+ // // Play song
+ // function playSong() {
+ //   musicContainer.classList.add('play');
+ //   playBtn.style.color = '#5E9797';
+ //   playBtn.style.cursor = 'default';
+ //   pauseBtn.style.color = '#4D7A7A';
+ //   audio.play();
+ // }
+ // // Pause song
+ // function pauseSong() {
+ //   musicContainer.classList.remove('play');
+ //   playBtn.style.color = '#4D7A7A';
+ //   pauseBtn.style.color = '#5E9797';
+ //   pauseBtn.style.cursor = 'default';
+ //   audio.pause();
+ // }
+ // // Current song
+ // let i = 0;
+ // // loadSong(songs[i]);
+ // // Initially load song details into DOM
+ // // loadSong(songs[songIndex]);
+ // // // Previous song
+ // // function prevSong() {
+ // //   songIndex--;
+ // //   if (songIndex < 0) {
+ // //     songIndex = songs.length - 1;
+ // //   }
+ // //   loadSong(songs[songIndex]);
+ // //   playSong();
+ // // }
+ // // // Next song
+ // // function nextSong() {
+ // //   songIndex++;
+ // //   if (songIndex > songs.length - 1) {
+ // //     songIndex = 0;
+ // //   }
+ // //   loadSong(songs[songIndex]);
+ // //   playSong();
+ // // }
+ // // // Update progress bar
+ // // function updateProgress(e) {
+ // //   const { duration, currentTime } = e.srcElement;
+ // //   const progressPercent = (currentTime / duration) * 100;
+ // //   progress.style.width = `${progressPercent}%`;
+ // // }
+ // // // Set progress bar
+ // // function setProgress(e) {
+ // //   const width = this.clientWidth;
+ // //   const clickX = e.offsetX;
+ // //   const duration = audio.duration;
+ // //   audio.currentTime = (clickX / width) * duration;
+ // // }
+ // // // Event listeners
+ // // playBtn.addEventListener('click', () => {
+ // //   const isPlaying = musicContainer.classList.contains('play');
+ // //   if (isPlaying) {
+ // //     pauseSong();
+ // //   } else {
+ // //     playSong();
+ // //   }
+ // // });
+ // // // Change song
+ // // prevBtn.addEventListener('click', prevSong);
+ // // nextBtn.addEventListener('click', nextSong);
+ // // // Time/song update
+ // // audio.addEventListener('timeupdate', updateProgress);
+ // // // Click on progress bar
+ // // progressContainer.addEventListener('click', setProgress);
+ // // // Song ends
+ // // audio.addEventListener('ended', nextSong);
+;
 
-},{}]},["aAqkz","b1cMg"], "b1cMg", "parcelRequire60da")
+},{}]},["9pACa","2Z4jX"], "2Z4jX", "parcelRequire60da")
 
-//# sourceMappingURL=acronyms.af2ed849.js.map
+//# sourceMappingURL=acronyms.6ca271c3.js.map

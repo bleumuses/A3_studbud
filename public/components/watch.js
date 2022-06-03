@@ -76,7 +76,7 @@ const closeWatchButton = document.getElementById('close-watch');
 // Watch opening event listener
 activateWatchButton.addEventListener('click', () => {
   watch.style.display='block';
-  watch.style.left = '525px';
+  watch.style.left = '50px';
   activateWatchButton.style.color = '#FCFCFC';
   activateWatchButton.style.backgroundColor = '#4D7A7A';
   activateStopwatchButton.style.color = '#4d7a7a';

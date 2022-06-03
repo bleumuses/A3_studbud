@@ -1,25 +1,63 @@
+.acro-container {
+    margin-top: 20px;
+    min-height: 10rem;
+    // border: 2px dashed black;
+}
+
 // Draggable Acronym Card styling
 #acrocard-header {
-    background-color: #BC4B51;
-    color: #FCFCFC;
-    padding: 20px;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;    
+    background-color: #FCFCFC;
+    color: #4D7A7A;
+    padding: 20px 20px 0px 20px;
     } 
     h3 {
-    margin-bottom: 10px;
     font-weight: 400;
     cursor: text;
 }
 
+#acrocard-header > button {
+    border: none;
+    background-color: transparent;
+    color: #4D7A7A;
+}
+
 #acrocard-content {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-between;
-    align-items: center;
+    // display: flex;
+    // flex-direction: row;
+    // align-content: center;
+    // justify-content: space-between;
+    // align-items: center;
+    // display: none;
     padding: 0px 20px;
     } 
     p {
     font-size: 12px;
     cursor: text;
+}
+
+.def-hide {
+    display: none;
+}
+
+.def-show {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.def-show > p {
+    margin-bottom: 0px;
+}
+
+.def-show > button {
+    border: none;
+    background-color: transparent;
+    color: rgba(77, 122, 122, 0.15);
+    &:hover{
+        color: rgba(77, 122, 122, 0.5);
+    }
 }

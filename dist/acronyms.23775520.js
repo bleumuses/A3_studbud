@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"aAqkz":[function(require,module,exports) {
+})({"iwxW2":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "c250a335af2ed849";
+module.bundle.HMR_BUNDLE_ID = "1faf474623775520";
 function _toConsumableArray(arr) {
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
@@ -525,143 +525,123 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"b1cMg":[function(require,module,exports) {
-// Generate New Acronym 
-const genAcroModal = document.getElementById('acrogen-modal-container');
-const acroGenForm = document.getElementById('acrogen');
-const addAcroGenBtn = document.getElementById('genNewAcro');
-const closeAcroGenBtn = document.getElementById('closeAcroGenForm');
-const acroList = document.querySelector('.acro-container');
-addAcroGenBtn.addEventListener('click', ()=>{
-    genAcroModal.classList.add('show');
+},{}],"1ZdnP":[function(require,module,exports) {
+// Basic acroCol form DOM elements
+const acroColModal = document.getElementById('acro-col-modal-container');
+const acroColForm = document.getElementById('acro-col-form');
+const addAcroColButton = document.getElementById('addNewAcroCol');
+const closeAcroColButton = document.getElementById('closeAcroColForm');
+const acroColList = document.querySelector('#kanban');
+// DOM elements for the acroCol input fields
+var acroColTitle = document.getElementById('acroColTitleInput');
+// acroCol form opening event listener
+addAcroColButton.addEventListener('click', ()=>{
+    acroColModal.classList.add('show');
 });
-closeAcroGenBtn.addEventListener('click', ()=>{
-    genAcroModal.classList.remove('show');
+// acroCol form closing event listener
+closeAcroColButton.addEventListener('click', ()=>{
+    acroColModal.classList.remove('show');
 });
-var wordInput = document.getElementById('wordInput');
-// Generate new acronym form submission event listener
-acroGenForm.addEventListener("submit", function(event) {
+// acroCol form submission event listener
+acroColForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    let str = wordInput.value;
-    if (str) buildAcro(str);
-    genAcroModal.classList.remove('show');
+    let acroCol = acroColTitle.value;
+    if (acroCol) addAcroCol(acroCol);
+    acroColModal.classList.remove('show');
 });
-// Add New Acronym
-const acroModal = document.getElementById('acro-modal-container');
-const acroForm = document.getElementById('acro');
-const addAcroBtn = document.getElementById('addNewAcro');
-const closeAcroBtn = document.getElementById('closeAcroForm');
-addAcroBtn.addEventListener('click', ()=>{
-    acroModal.classList.add('show');
-});
-closeAcroBtn.addEventListener('click', ()=>{
-    acroModal.classList.remove('show');
-});
-var acroWordInput = document.getElementById('acroWordInput');
-var acroDefinitionInput = document.getElementById('acroDefinitionInput');
-// Generate new acronym form submission event listener
-acroForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    let acro = acroWordInput.value;
-    let acroDefinition = acroDefinitionInput.value;
-    if (acro) addAcro(acro, acroDefinition);
-    acroModal.classList.remove('show');
-});
-var acroListArray = [];
-function addAcro(acroWord, acroDefinition) {
+// Create global array to track acroCols
+var acroColListArray = [];
+// Function to add acroCol with user inputs as parameters
+function addAcroCol(acroColName) {
     let dateCreated = new Date().toLocaleDateString('en-US');
-    let acro = {
+    let acroCol = {
         id: Date.now(),
-        dateCreated,
-        acroWord,
-        acroDefinition
+        acroColName,
+        dateCreated
     };
-    acroListArray.push(acro);
-    console.log(acroListArray);
-    renderAcro(acro);
+    acroColListArray.push(acroCol);
+    console.log(acroColListArray);
+    renderAcroCol(acroCol);
 }
-function renderAcro(acro1) {
-    //Acronym card container
-    let acroCard = document.createElement('div');
-    acroCard.classList.add('draggable');
-    acroCard.setAttribute('id', acro1.id);
-    acroCard.setAttribute('draggable', 'true');
-    //Acronym card header
-    let acroCardHeader = document.createElement('div');
-    acroCardHeader.setAttribute('id', 'acrocard-header');
-    let acroWord = document.createElement('h2');
-    acroWord.textContent = acro1.acroWord;
-    acroWord.setAttribute('contenteditable', 'true');
-    const expandBtn = document.createElement('button');
-    const expandIcon = document.createElement('i');
-    expandIcon.setAttribute('class', 'fa-solid fa-caret-down');
-    expandBtn.appendChild(expandIcon);
-    // Append acronym card's heading element to card header
-    acroCardHeader.appendChild(acroWord);
-    acroCardHeader.appendChild(expandBtn);
-    //Acronym card content
-    let acroCardContent = document.createElement('div');
-    acroCardContent.setAttribute('class', 'def-hide');
-    acroCardContent.setAttribute('id', 'acrocard-content');
-    const deltBtn = document.createElement('button');
-    const deltIcon = document.createElement('i');
-    deltIcon.setAttribute('class', 'fa-solid fa-trash-can');
-    deltBtn.appendChild(deltIcon);
-    let acroDefinition = document.createElement('p');
-    acroDefinition.textContent = acro1.acroDefinition;
-    acroDefinition.setAttribute('contenteditable', 'true');
-    // Append acronym card's content element to card header
-    acroCardContent.appendChild(acroDefinition);
-    acroCardContent.appendChild(deltBtn);
-    acroCard.appendChild(acroCardHeader);
-    acroCard.appendChild(acroCardContent);
-    acroList.appendChild(acroCard);
-    // Delete task card when user clicks delete button 
-    deltBtn.addEventListener('click', ()=>{
-        const check = confirm('Are you sure you want to delete this card?');
-        let id = event.target.parentElement.getAttribute('data-id');
-        let index = acroListArray.findIndex((acro)=>acro.id === Number(id)
-        );
-        if (check) {
-            removeItemFromArray(acroListArray, index);
-            console.log(acroListArray);
-            acroCard.remove();
-        }
-    });
-    expandBtn.addEventListener('click', ()=>{
-        expandIcon.classList.toggle('fa-caret-up');
-        acroCardContent.classList.toggle('def-show');
-    });
-    // Function to allow cards to be dragged and dropped between columns
+// Function to display acroCol on screen
+function renderAcroCol(acroCol) {
+    // Create Kanban acroCol with editable title
+    let kAcroCol = document.createElement('div');
+    kAcroCol.setAttribute('id', 'kanban-column');
+    let kAcroColTitle = document.createElement('h2');
+    kAcroColTitle.setAttribute('contenteditable', 'true');
+    kAcroColTitle.textContent = acroCol.acroColName;
+    let dash = document.createElement('hr');
+    // Append user input into acroCol
+    kAcroCol.appendChild(kAcroColTitle);
+    kAcroCol.append(dash);
+    // Create container to store task card
+    let kAcroColItem = document.createElement('div');
+    kAcroColItem.setAttribute('class', 'acro-container');
+    // Add container to acroCol
+    kAcroCol.appendChild(kAcroColItem);
+    // Add acroCol to list of acroCols
+    acroColList.appendChild(kAcroCol);
+    // Allow new Kanban acroCol to contain draggable cards when dragged over         
     // Adapted from https://codepen.io/WebDevSimplified/pen/JjdveeV 
-    const draggables = document.querySelectorAll('.draggable');
-    // Add 'dragging' class to provide feedback when the user starts dragging card
-    draggables.forEach((draggable)=>{
-        draggable.addEventListener('dragstart', ()=>{
-            draggable.classList.add('dragging');
-        });
-        // Remove 'dragging' class to provide feedback when the user stops dragging card
-        draggable.addEventListener('dragend', ()=>{
-            draggable.classList.remove('dragging');
+    const containers1 = document.querySelectorAll('.acro-container');
+    containers1.forEach((container)=>{
+        container.addEventListener('dragover', (e)=>{
+            e.preventDefault();
+            // Call getDragAfterElement function to pass in the current container that the user is in and their mouse y-position
+            const afterElement = getDragAfterElement(container, e.clientY);
+            // Select the only card that is currently being dragged
+            const draggable = document.querySelector('.dragging');
+            if (afterElement == null) // Append card to end of container if there is nothing above
+            container.appendChild(draggable);
+            else // Determine which card the dragging card would be inserted before
+            container.insertBefore(draggable, afterElement);
         });
     });
-    acroForm.reset();
-    acroGenForm.reset();
+    acroColForm.reset();
 }
-// Function to remove item from array
-function removeItemFromArray(arr, index) {
-    if (index > -1) arr.splice(index, 1);
-    return arr;
-}
-function buildAcro(str) {
-    const wordArr = str.split(' ');
-    const firstLetters = wordArr.map((word)=>word[0]
-    );
-    const acroWord = firstLetters.join('');
-    const res = acroWord.toUpperCase();
-    addAcro(res, str);
+// Allow existing Kanban acroCol to contain draggable cards when dragged over
+// Adapted from https://codepen.io/WebDevSimplified/pen/JjdveeV 
+const containers = document.querySelectorAll('.acro-container');
+containers.forEach((container)=>{
+    container.addEventListener('dragover', (e)=>{
+        e.preventDefault();
+        // Call getDragAfterElement function to pass in the current container that the user is in and their mouse y-position
+        const afterElement = getDragAfterElement(container, e.clientY);
+        // Select the only card that is currently being dragged
+        const draggable = document.querySelector('.dragging');
+        if (afterElement == null) // Append card to end of container if there is nothing above
+        container.appendChild(draggable);
+        else // Determine which card the dragging card would be inserted before
+        container.insertBefore(draggable, afterElement);
+    });
+});
+// Function to determine the user's mouse y-position to return whichever card the mouse is directly after  
+function getDragAfterElement(container, y) {
+    // Array of all cards within the container, excluding the card that the user is currently dragging
+    const draggableElements = [
+        ...container.querySelectorAll('.draggable:not(.dragging)')
+    ];
+    // Loop through the array of cards within the container to return the closest card child that is directly after the user's mouse y-position which was passed in through the function
+    return draggableElements.reduce((closest, child)=>{
+        // Create bounding box around the children inside the array
+        const box = child.getBoundingClientRect();
+        // Find distance between the centre of the bounding box and the user's cursor
+        const offset = y - (box.top + box.height / 2);
+        // If offset is negative, cursor is above the card. If offset is positive, cursor is below the card.
+        // Get card that has negative offset but closest to 0 
+        if (offset < 0 && offset > closest.offset) // Return an object with the new closest element and its child
+        return {
+            offset: offset,
+            element: child
+        };
+        else return closest;
+    // Initial offset is smallest number so any new offset is greater than the initial one
+    }, {
+        offset: Number.NEGATIVE_INFINITY
+    }).element;
 }
 
-},{}]},["aAqkz","b1cMg"], "b1cMg", "parcelRequire60da")
+},{}]},["iwxW2","1ZdnP"], "1ZdnP", "parcelRequire60da")
 
-//# sourceMappingURL=acronyms.af2ed849.js.map
+//# sourceMappingURL=acronyms.23775520.js.map

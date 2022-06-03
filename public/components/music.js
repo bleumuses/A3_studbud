@@ -4,14 +4,14 @@ const activateMusicPlayer = document.getElementById('music-btn');
 const closeMusicPlayerBtn = document.getElementById('close-music');
 // const playBtn = document.getElementById('play');
 // const pauseBtn = document.getElementById('pause');
-const prevBtn = document.getElementById('prev');
-const skipBtn = document.getElementById('skip');
+// const prevBtn = document.getElementById('prev');
+// const skipBtn = document.getElementById('skip');
 
-const audio = document.getElementById('audio');
-const progress = document.getElementById('progress');
-const progressContainer = document.getElementById('progress-container');
-const title = document.getElementById('title');
-const cover = document.getElementById('cover');
+// const audio = document.getElementById('audio');
+// const progress = document.getElementById('progress');
+// const progressContainer = document.getElementById('progress-container');
+// const title = document.getElementById('title');
+// const cover = document.getElementById('cover');
 
 // Music Player opening event listener
 activateMusicPlayer.addEventListener('click', () => {
@@ -28,20 +28,7 @@ closeMusicPlayerBtn.addEventListener('click', () => {
     activateMusicPlayer.style.backgroundColor = '#FCFCFC';
   })
 
-// // Skip
-// skipBtn.addEventListener('click', () => {
-//   document.getElementById('song1').style.display = 'none';
-//   document.getElementById('song2').style.display = 'flex';
-//   document.getElementById('song3').style.display = 'none';
-// })
-
-// // Previous
-// prevBtn.addEventListener('click', () => {
-//   document.getElementById('song1').style.display = 'none';
-//   document.getElementById('song2').style.display = 'none';
-//   document.getElementById('song3').style.display = 'flex';
-// })
-
+// Adapted from https://github.com/bradtraversy/vanillawebprojects/tree/master/music-player
 // // Song titles
 // const songs = [
 //     {

@@ -1,5 +1,5 @@
 // Hidden Modal styling with overlay
-.taskform-modal-container, .columnform-modal-container, .acrogen-modal-container, .acro-modal-container, .settings-modal-container {
+.taskform-modal-container, .columnform-modal-container, .acrogen-modal-container, .acro-modal-container, .acro-col-modal-container, .settings-modal-container {
     background-color: rgba(91, 142, 125, .25);
     opacity: 0;
     position: fixed;
@@ -16,18 +16,6 @@
 
 // When user clicks Add Button, Modal appears with overlay
 .show {
-    pointer-events: auto;
-    opacity: 1;
-    z-index: 1000;
-}
-
-.acrogen-modal-container.show {
-    pointer-events: auto;
-    opacity: 1;
-    z-index: 1000;
-}
-
-.settings-modal-container.show {
     pointer-events: auto;
     opacity: 1;
     z-index: 1000;

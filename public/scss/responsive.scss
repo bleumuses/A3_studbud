@@ -59,6 +59,7 @@
 
     #watch-btn, #music-btn {
         padding: 8px 20px;
+        margin: 0px 10px;
     }
 
     .watch-nav {
@@ -90,6 +91,11 @@
 
     .mode {
         font-size: 1rem;
+    }
+
+    // Music Feature 
+    #music-container {
+        padding: 20px 30px;
     }
 }
 
@@ -249,6 +255,7 @@
 
     #watch-btn, #music-btn {
         padding: 5px 15px;
+        margin: 0px 5px;
     }
 
     .watch-nav {
@@ -281,5 +288,10 @@
 
     .mode {
         font-size: 0.8rem;
+    }
+
+    // Music Feature 
+    #music-container {
+        padding: 20px 20px;
     }
 }

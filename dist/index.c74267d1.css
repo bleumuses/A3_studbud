@@ -169,6 +169,11 @@ button {
   right: 0;
 }
 
+#watch-btn, #music-btn {
+  cursor: pointer;
+  border-radius: 50px;
+}
+
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
@@ -230,6 +235,7 @@ button {
   }
 
   #watch-btn, #music-btn {
+    margin: 0 10px;
     padding: 8px 20px;
   }
 
@@ -262,6 +268,10 @@ button {
 
   .mode {
     font-size: 1rem;
+  }
+
+  #music-container {
+    padding: 20px 30px;
   }
 }
 
@@ -411,6 +421,7 @@ button {
   }
 
   #watch-btn, #music-btn {
+    margin: 0 5px;
     padding: 5px 15px;
   }
 
@@ -444,6 +455,10 @@ button {
 
   .mode {
     font-size: .8rem;
+  }
+
+  #music-container {
+    padding: 20px;
   }
 }
 
@@ -6573,7 +6588,7 @@ p {
   color: #5e9797;
 }
 
-.taskform-modal-container, .columnform-modal-container, .acrogen-modal-container, .acro-modal-container, .settings-modal-container {
+.taskform-modal-container, .columnform-modal-container, .acrogen-modal-container, .acro-modal-container, .acro-col-modal-container, .settings-modal-container {
   opacity: 0;
   width: 100vw;
   height: 100vh;
@@ -6588,7 +6603,7 @@ p {
   left: 0;
 }
 
-.show, .acrogen-modal-container.show, .settings-modal-container.show {
+.show {
   pointer-events: auto;
   opacity: 1;
   z-index: 1000;
@@ -6661,25 +6676,33 @@ select {
   background-position: calc(100% - .75rem) !important;
 }
 
+.acro-container {
+  min-height: 10rem;
+  margin-top: 20px;
+}
+
 #acrocard-header {
-  color: #fcfcfc;
-  background-color: #bc4b51;
-  margin-bottom: 20px;
-  padding: 20px;
+  color: #4d7a7a;
+  background-color: #fcfcfc;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 20px 0;
+  display: flex;
 }
 
 h3 {
   cursor: text;
-  margin-bottom: 10px;
   font-weight: 400;
 }
 
+#acrocard-header > button {
+  color: #4d7a7a;
+  background-color: #0000;
+  border: none;
+}
+
 #acrocard-content {
-  flex-direction: row;
-  place-content: center space-between;
-  align-items: center;
   padding: 0 20px;
-  display: flex;
 }
 
 p {
@@ -6687,10 +6710,29 @@ p {
   font-size: 12px;
 }
 
-#watch-btn {
-  cursor: pointer;
-  border-radius: 50px;
-  margin: 0 10px;
+.def-hide {
+  display: none;
+}
+
+.def-show {
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.def-show > p {
+  margin-bottom: 0;
+}
+
+.def-show > button {
+  color: #4d7a7a26;
+  background-color: #0000;
+  border: none;
+}
+
+.def-show > button:hover {
+  color: #4d7a7a80;
 }
 
 .feature-show {
@@ -6809,12 +6851,6 @@ p {
   font-weight: 700;
 }
 
-#music-btn {
-  cursor: pointer;
-  border-radius: 50px;
-  margin: 0 10px;
-}
-
 audio::-webkit-media-controls-panel {
   background-color: #fcfcfc;
 }
@@ -6831,12 +6867,13 @@ audio::-webkit-media-controls-panel {
 
 #music-container {
   z-index: 10;
+  height: 130px;
   background-color: #fcfcfc;
   border-radius: 32px 32px 0 0;
-  padding: 20px 30px;
   display: none;
   position: fixed;
   bottom: 0;
+  overflow-y: scroll;
   box-shadow: 2px 4px 10px #00000040;
 }
 
@@ -6879,6 +6916,7 @@ audio::-webkit-media-controls-panel {
   cursor: pointer;
   padding-left: 0;
   font-size: 1.2rem;
+  right: 0;
 }
 
 /*# sourceMappingURL=index.c74267d1.css.map */

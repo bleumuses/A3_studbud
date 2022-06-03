@@ -2,4 +2,3 @@
 import './components/tasklist';
 import './components/kanban-column';
 import './components/watch';
-import './components/music';
