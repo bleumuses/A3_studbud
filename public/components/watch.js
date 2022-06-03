@@ -1,4 +1,7 @@
-// Code adapted from https://www.w3schools.com/howto/howto_js_draggable.asp
+// Adapted from 
+// W3Schools. (n.d.). How TO - Create a Draggable HTML Element [Source Code]. W3Schools. https://www.w3schools.com/howto/howto_js_draggable.asp
+
+
 
 const { init } = require("events");
 
@@ -48,6 +51,7 @@ function dragElement(elmnt) {
 //Stopwatch
 
 // Attempt to toggle play/pause button but was advised by tutor to keep them as two separate buttons
+
 // let btn = document.querySelector('.toggle');
 // let icon = btn.querySelector('.fa-play');
 // console.log(btn);
@@ -190,7 +194,9 @@ function stopwatchReset () {
 }
 
 // Pomodoro timer
-// Adapted from https://github.com/Web-Dev-Jr/JS-Pomodoro
+// Adapted from 
+// Kautsz, S. (2021). JS-Pomdoro [Source Code]. Github. https://github.com/Web-Dev-Jr/JS-Pomodoro
+
 const start = document.getElementById('pomodoro-start');
 const reset = document.getElementById('pomodoro-reset');
 const stop = document.getElementById('pomodoro-stop');
@@ -319,7 +325,8 @@ function timerEndAlert() {
 }
 }
 
-// Pomodoro
+// Attempt to made the Pomodoro Timer to work but failed
+
 // const submitSettingsForm = document.getElementById('submitSettings');
 // const pomodoroTime_el = document.getElementById('pomodoro-time');
 // const startPomodoroButton = document.getElementById('pomodoro-start');

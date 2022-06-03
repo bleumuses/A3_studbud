@@ -134,7 +134,10 @@ function renderAcro (acro) {
     })
 
     // Function to allow cards to be dragged and dropped between columns
-    // Adapted from https://codepen.io/WebDevSimplified/pen/JjdveeV 
+    // Adapted from 
+    // WebDevSimplified. (n.d.). Drag and Drop [Source Code]. Codepen. https://codepen.io/WebDevSimplified/pen/JjdveeV
+
+
     const draggables = document.querySelectorAll('.draggable');
 
     // Add 'dragging' class to provide feedback when the user starts dragging card

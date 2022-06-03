@@ -1,3 +1,7 @@
+// Task list and task form
+// Adapted from 
+// Dongas, R. (2022). Modular-WebApp-Demo [Source Code]. Replit. https://replit.com/@robdongas/Modular-WebApp-Demo
+
 //Basic task form DOM elements
 const taskModal = document.getElementById('taskform-modal-container');
 const taskform = document.getElementById('taskform');
@@ -39,8 +43,9 @@ taskform.addEventListener("submit", function(event) {
     taskModal.classList.remove('show');
 })
 
-// Attempt to record the colour user has selected to set the task header's colour (inspired by https://codepen.io/kylewetton/pen/bGbobMa?editors=1111)
+// Attempt to record the colour user has selected to set the task header's colour (inspired by Wetton, K. (2019). Dynamic Colour Picking - Part 3 [Source Code]. Codepen. https://codepen.io/kylewetton/pen/bGbobMa?editors=1111)
 // Able to get the colour but failed to set the colour (see more below)
+
 // const colorButton = document.querySelectorAll('.color');
 
 // colorButton.forEach(color => {
@@ -155,7 +160,9 @@ function renderTask(task) {
     })
 
     // Function to allow cards to be dragged and dropped between columns
-    // Adapted from https://codepen.io/WebDevSimplified/pen/JjdveeV 
+    // Adapted from 
+    // WebDevSimplified. (n.d.). Drag and Drop [Source Code]. Codepen. https://codepen.io/WebDevSimplified/pen/JjdveeV
+
     const draggables = document.querySelectorAll('.draggable');
 
     // Add 'dragging' class to provide feedback when the user starts dragging card

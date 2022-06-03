@@ -72,7 +72,9 @@ function renderColumn(column) {
     columnList.appendChild(kColumn);
 
     // Allow new Kanban column to contain draggable cards when dragged over         
-    // Adapted from https://codepen.io/WebDevSimplified/pen/JjdveeV 
+    // Adapted from
+    //WebDevSimplified. (n.d.). Drag and Drop [Source Code]. Codepen. https://codepen.io/WebDevSimplified/pen/JjdveeV
+
     const containers = document.querySelectorAll('.container');
 
     containers.forEach(container => {
@@ -96,7 +98,9 @@ function renderColumn(column) {
 }
 
 // Allow existing Kanban column to contain draggable cards when dragged over
-// Adapted from https://codepen.io/WebDevSimplified/pen/JjdveeV 
+// Adapted from 
+// WebDevSimplified. (n.d.). Drag and Drop [Source Code]. Codepen. https://codepen.io/WebDevSimplified/pen/JjdveeV
+
 const containers = document.querySelectorAll('.container');
 
 containers.forEach(container => {

@@ -550,7 +550,9 @@ closeMusicPlayerBtn.addEventListener('click', ()=>{
     musicContainer.style.display = 'none';
     activateMusicPlayer.style.color = '#4D7A7A';
     activateMusicPlayer.style.backgroundColor = '#FCFCFC';
-}) // Adapted from https://github.com/bradtraversy/vanillawebprojects/tree/master/music-player
+}) // Adapted from
+ // Traversy, B. (2021). music-player [Source Code]. Github. https://github.com/bradtraversy/vanillawebprojects/tree/master/music-player
+ // Attempt to create music player but audio failed to come through
  // // Song titles
  // const songs = [
  //     {
