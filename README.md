@@ -75,6 +75,8 @@ Kautsz, S. (2021). JS-Pomdoro [Source Code]. Github. https://github.com/Web-Dev-
 
 Traversy, B. (2021). music-player [Source Code]. Github. https://github.com/bradtraversy/vanillawebprojects/tree/master/music-player
 
+Tyler Potts. (2021). Learn HTML, CSS & JavaScript by coding a Stopwatch | A beginner tutorial [Video]. Youtube. https://www.youtube.com/watch?v=49f1cjZWRJA&t=51s
+
 WebDevSimplified. (n.d.). Drag and Drop [Source Code]. Codepen. https://codepen.io/WebDevSimplified/pen/JjdveeV
 
 Wetton, K. (2019). Dynamic Colour Picking - Part 3 [Source Code]. Codepen. https://codepen.io/kylewetton/pen/bGbobMa?editors=1111

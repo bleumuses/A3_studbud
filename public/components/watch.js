@@ -1,13 +1,12 @@
-// Adapted from 
-// W3Schools. (n.d.). How TO - Create a Draggable HTML Element [Source Code]. W3Schools. https://www.w3schools.com/howto/howto_js_draggable.asp
-
-
 
 const { init } = require("events");
 
 window.onload = function(){ 
 
 //Make Watch draggagle:
+// Adapted from 
+// W3Schools. (n.d.). How TO - Create a Draggable HTML Element [Source Code]. W3Schools. https://www.w3schools.com/howto/howto_js_draggable.asp
+
 dragElement(document.getElementById('watch'));
 
 function dragElement(elmnt) {
@@ -47,8 +46,6 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
-
-//Stopwatch
 
 // Attempt to toggle play/pause button but was advised by tutor to keep them as two separate buttons
 
@@ -133,6 +130,9 @@ closeWatchButton.addEventListener('click', () => {
 })
 
 // Stopwatch
+// Adapted from 
+// Tyler Potts. (2021). Learn HTML, CSS & JavaScript by coding a Stopwatch | A beginner tutorial [Video]. Youtube. https://www.youtube.com/watch?v=49f1cjZWRJA&t=51s
+
 const stopwatchTime_el = document.getElementById('stopwatch-time');
 const startStopwatchButton = document.getElementById('start');
 const stopStopwatchButton = document.getElementById('stop');
